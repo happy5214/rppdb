@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo chown -R happy5214:www-data app/cache/
+sudo chmod -R 775 app/cache/

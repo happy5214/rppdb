@@ -1,0 +1,10 @@
+_rppdb_main:
+    resource: "@RPPDbMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+logout:
+    path:   /logout
+
+_rppdb_riesel:
+    resource: "@RPPDbRieselBundle/Resources/config/routing.yml"
+    prefix:   /riesel

@@ -1,0 +1,75 @@
+{% block rieselk_widget %}
+
+<fieldset>
+<legend>Display</legend>
+{{ form_row(form.num) }}
+{{ form_row(form.value) }}
+</fieldset>
+
+<fieldset>
+<legend>Numerical</legend>
+{{ form_row(form.nashWeight) }}
+{{ form_row(form.is3k) }}
+{{ form_row(form.is15k) }}
+{{ form_row(form.is2145k) }}
+{{ form_row(form.is2805k) }}
+{{ form_row(form.isPrimorial) }}
+{{ form_row(form.coveringSet) }}
+</fieldset>
+
+<fieldset>
+<legend>Testing</legend>
+{{ form_row(form.ranges) }}
+{{ form_row(form.maxTested) }}
+{{ form_row(form.reserved) }}
+{{ form_row(form.reservedBy) }}
+{{ form_row(form.lastUpdate) }}
+</fieldset>
+
+<fieldset class="primes">
+<legend>Primes</legend>
+<table class="table1 primes" style="text-align: center; width: 100%;" data-prototype="{{ form_widget(form.primes.vars.prototype)|e }}">
+<thead><tr>
+<th><i>n</i></th>
+<th>Woodall</th>
+<th>Prime Pages entry</th>
+<th>Comment</th>
+<th>Twin</th>
+<th>Sophie Germain</th>
+<th>100th prime</th>
+<th>Proven prime</th>
+<th>Prime tested by</th>
+<th>Twin tested by</th>
+<th>Found by</th>
+<th>Found on</th>
+</tr></thead>
+<tbody class="primes">
+{% for prime in form.primes %}
+{{ form_widget(prime) }}
+{% endfor %}
+</tbody>
+</table>
+</fieldset>
+
+{{ form_row(form.save) }}
+
+{% endblock %}
+
+{% block rieselprime_widget %}
+
+<tr>
+<td>{{ form_widget(form.n, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.woodall, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.utm, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.comment, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.isTwin) }}</td>
+<td>{{ form_widget(form.isSG) }}</td>
+<td>{{ form_widget(form.is100th) }}</td>
+<td>{{ form_widget(form.isProvenPrime) }}</td>
+<td>{{ form_widget(form.testedPrime) }}</td>
+<td>{{ form_widget(form.testedTwin) }}</td>
+<td>{{ form_widget(form.foundBy) }}</td>
+<td>{{ form_widget(form.foundOn, {'attr': {'class': 'prime_edit'}}) }}</td>
+</tr>
+
+{% endblock %}

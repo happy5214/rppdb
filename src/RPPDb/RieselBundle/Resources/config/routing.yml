@@ -1,0 +1,14 @@
+default:
+    resource: "@RPPDbRieselBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /home
+
+display:
+    resource: "@RPPDbRieselBundle/Controller/DisplayController.php"
+    type:     annotation
+    prefix:   /
+
+edit:
+    resource: "@RPPDbRieselBundle/Controller/EditController.php"
+    type:     annotation
+    prefix:   /edit
