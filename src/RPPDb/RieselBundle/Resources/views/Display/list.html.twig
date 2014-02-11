@@ -1,0 +1,32 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+
+{% block title %}
+Riesel list k*2^n-1 prime {{ min }} &lt; k &lt; {{ max }}
+{% endblock title %}
+
+{% block header %}
+Riesel list (<i>k</i>&middot;2<sup><i>n</i></sup>-1 prime) for {{ min }} &lt; k &lt; {{ max }}
+{% endblock header %}
+
+{% block content %}
+<table class="table1">
+<thead>
+<tr>
+<th><i>k</i></th>
+<th>Reserved<br>Last editor</th>
+<th>Last Update</th>
+<th>#<i>n</i></th>
+<th>Nash weight</th>
+<th>max <i>n</i>/<br>range tested</th>
+<th><i>k</i> &middot; 2<sup><i>n</i></sup> - 1 is prime for the following <i>n</i>'s</th>
+</tr>
+</thead>
+<tbody>
+{% for rieselk in riesel_ks %}
+{{ render_esi(controller('RPPDbRieselBundle:Display:kdetail', {
+        'k': rieselk.id
+    })) }}
+{% endfor %}
+</tbody>
+</table>
+{% endblock content %}

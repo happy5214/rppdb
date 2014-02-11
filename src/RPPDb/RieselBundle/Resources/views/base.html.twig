@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}Riesel and Proth Prime Database{% endblock %}</title>
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/rppdbmain/css/rps.css') }}">
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{{ asset('bundles/rppdbmain/js/rps.js') }}"></script>
+{% endblock %}
+</head>
+<body>
+<h1>{% block header %}RPPDb{% endblock header %}</h1>
+{% block content %}Blah.{% endblock content %}
+</body>
+</html>

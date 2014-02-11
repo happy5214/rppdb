@@ -1,0 +1,42 @@
+security:
+    encoders:
+        #RPPDb\MainBundle\Entity\User: sha512
+        Symfony\Component\Security\Core\User\User:
+            algorithm: sha512
+            iterations: 1
+            encode_as_base64: false
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    happy5214:  { password: 77c0844c5077e693e8447bc5034708e1687c04ff9eb9b857152ab90e518c18acc8caef4a07aac9f9749b38a45207c4110e1ec77f75a7fccf55bb1ad28618e00d, roles: [ 'ROLE_SUPER_ADMIN' ] }
+                    kar_bon: { password: 941fe9b3491d2803adcd37858dd506ddb5488926e7dafa4e7fa805cd1ff2c427579c31d539348528f3d1b24252a1e7fe9cc3190b43167d4033a04aa7238a57fe, roles: [ 'ROLE_SUPER_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        #login:
+        #    pattern:  ^/demo/secured/login$
+        #    security: false
+
+        secured_area:
+            pattern:    ^/
+            #form_login:
+            #    check_path: _security_check
+            #    login_path: _demo_login
+            logout:
+                path:   /logout
+                target: _riesel_default_index
+            anonymous: ~
+            http_basic:
+                realm: "Secured Admin Area"
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

@@ -1,0 +1,21 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+{% form_theme form 'RPPDbRieselBundle:Form:fields.html.twig' %}
+
+{% block scripts %}
+{{ parent() }}
+
+<script type="text/javascript" src="{{ asset('bundles/rppdbriesel/js/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/rppdbriesel/js/kedit.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+Add new k
+{% endblock title %}
+
+{% block header %}
+Add new <i>k</i>
+{% endblock header %}
+
+{% block content %}
+{{ form(form) }}
+{% endblock content %}

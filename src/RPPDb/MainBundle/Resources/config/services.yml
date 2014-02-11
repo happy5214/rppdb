@@ -1,0 +1,7 @@
+parameters:
+#    rpp_db_main.example.class: RPPDb\MainBundle\Example
+
+services:
+#    rpp_db_main.example:
+#        class: %rpp_db_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

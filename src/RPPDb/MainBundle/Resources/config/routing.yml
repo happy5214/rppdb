@@ -1,0 +1,4 @@
+default:
+    resource: "@RPPDbMainBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
