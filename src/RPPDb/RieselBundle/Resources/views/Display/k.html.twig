@@ -9,6 +9,7 @@
 {% endblock header %}
 
 {% block content %}
+<p><span style="text-align: left; width: 50%"><a href="{{ path('_riesel_display_k', {'k': previous.num}) }}">{{ previous.num }}</a></span><span style="text-align: right; float: right; width: 50%;"><a href="{{ path('_riesel_display_k', {'k': next.num}) }}">{{ next.num }}</a></span></p>
 <p><a href="{{ path('_riesel_edit_k', {'k': k.id}) }}">[Edit]</a></p>
 <table class="table1">
 <thead>
@@ -62,10 +63,10 @@
 <td colspan="2">Prime Pages</td>
 {% else %}
 <td>{{ prime.isProvenPrime ? "Yes" : "" }}</td>
-<td>{{ prime.testedPrime ?: "N/A" }}</td>
+<td>{% if prime.testedPrime %}<a href="{{ path('_riesel_display_program', {'id': prime.testedPrime.id}) }}">{{ prime.testedPrime }}{% else %}N/A{% endif %}</td>
 {% endif %}
-<td>{% if prime.isTwin %}{{ prime.testedTwin ?: "N/A" }}{% endif %}</td>
-<td>{{ prime.foundBy ? prime.foundBy.name }}</td>
+<td>{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}{% else %}N/A{% endif %}{% endif %}</td>
+<td>{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}{% endif %}</td>
 <td>{{ prime.foundOn is empty ? "" : prime.foundOn|date("Y-m-d") }}</td>
 </tr>
 {% endfor %}

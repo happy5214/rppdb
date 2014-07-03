@@ -1,0 +1,17 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+
+{% block title %}
+{{ program }}
+{% endblock title %}
+
+{% block header %}
+{{ program }}
+{% endblock header %}
+
+{% block content %}
+<p><a href="{{ path('_riesel_edit_program', {'id': program.id}) }}">[Edit]</a></p>
+<ul>
+<li>Primes: {{ program.primes|length }}</li>
+<li>Twins: {{ program.twins|length }}</li>
+</ul>
+{% endblock content %}

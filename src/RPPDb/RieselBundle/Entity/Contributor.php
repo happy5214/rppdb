@@ -39,7 +39,7 @@ class Contributor
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=500)
+     * @ORM\Column(name="link", type="string", length=500, nullable=true)
      */
     private $link;
     

@@ -10,4 +10,11 @@ Riesel Primes (<i>k</i>&middot;2<sup><i>n</i></sup>-1 prime)
 
 {% block content %}
 This site is under construction.
+<ul>
+<li><a href="{{ path('_riesel_display_list', {'min': 1, 'max': 15}) }}">1-15</a></li>
+<li><a href="{{ path('_riesel_display_list', {'min': 1, 'max': 300}) }}">1-300</a></li>
+<li><a href="{{ path('_riesel_add_k') }}">Add <i>k</i></a></li>
+<li><a href="{{ path('_riesel_add_program') }}">Add program</a></li>
+<li><a href="{{ path('_riesel_add_contributor') }}">Add contributor</a></li>
+</ul>
 {% endblock content %}

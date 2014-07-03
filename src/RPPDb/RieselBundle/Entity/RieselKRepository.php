@@ -19,4 +19,40 @@ class RieselKRepository extends EntityRepository
             )->setParameters(array('min' => $min, 'max' => $max))
             ->getResult();
     }
+    
+    public function findFirstK() {
+        return $this->getEntityManager()
+                    ->createQuery(
+                        'SELECT k FROM RPPDbRieselBundle:RieselK k ORDER BY k.num ASC'
+                   )->setMaxResults(1)
+                    ->getSingleResult();
+    }
+    
+    public function findLastK() {
+        return $this->getEntityManager()
+                    ->createQuery(
+                        'SELECT k FROM RPPDbRieselBundle:RieselK k ORDER BY k.num DESC'
+                   )->setMaxResults(1)
+                    ->getSingleResult();
+    }
+    
+    public function findNextK($k) {
+        $next = $this->getEntityManager()
+                     ->createQuery(
+                         'SELECT k FROM RPPDbRieselBundle:RieselK k WHERE k.num > :num ORDER BY k.num ASC'
+                    )->setParameters(array('num' => $k))
+                     ->setMaxResults(1)
+                     ->getOneOrNullResult();
+        return is_null($next) ? $this->findFirstK() : $next;
+    }
+    
+    public function findPreviousK($k) {
+        $previous = $this->getEntityManager()
+                         ->createQuery(
+                             'SELECT k FROM RPPDbRieselBundle:RieselK k WHERE k.num < :num ORDER BY k.num DESC'
+                        )->setParameters(array('num' => $k))
+                         ->setMaxResults(1)
+                         ->getOneOrNullResult();
+        return is_null($previous) ? $this->findLastK() : $previous;
+    }
 }
