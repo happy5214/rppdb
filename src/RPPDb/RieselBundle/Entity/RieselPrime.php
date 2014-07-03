@@ -107,7 +107,11 @@ class RieselPrime
      * @ORM\Column(name="found_on", type="date", nullable=true)
      */
     private $foundOn;
-
+    
+    /**
+     * @ORM\OneToOne(targetEntity="NearWoodall", mappedBy="prime")
+     */
+    private $nearWoodall;
 
     /**
      * Get id
@@ -345,30 +349,7 @@ class RieselPrime
         }
         return $string;
     }
-
-    /**
-     * Set rieselk
-     *
-     * @param \RPPDb\RieselBundle\Entity\RieselK $rieselk
-     * @return RieselPrime
-     */
-    public function setRieselK(\RPPDb\RieselBundle\Entity\RieselK $rieselk = null)
-    {
-        $this->rieselk = $rieselk;
-
-        return $this;
-    }
-
-    /**
-     * Get rieselk
-     *
-     * @return \RPPDb\RieselBundle\Entity\RieselK 
-     */
-    public function getRieselK()
-    {
-        return $this->rieselk;
-    }
-
+    
     /**
      * Set testedPrime
      *
@@ -436,5 +417,51 @@ class RieselPrime
     public function getFoundBy()
     {
         return $this->foundBy;
+    }
+
+    /**
+     * Set rieselk
+     *
+     * @param \RPPDb\RieselBundle\Entity\RieselK $rieselk
+     * @return RieselPrime
+     */
+    public function setRieselk(\RPPDb\RieselBundle\Entity\RieselK $rieselk = null)
+    {
+        $this->rieselk = $rieselk;
+
+        return $this;
+    }
+
+    /**
+     * Get rieselk
+     *
+     * @return \RPPDb\RieselBundle\Entity\RieselK 
+     */
+    public function getRieselk()
+    {
+        return $this->rieselk;
+    }
+
+    /**
+     * Set nearWoodall
+     *
+     * @param \RPPDb\RieselBundle\Entity\NearWoodall $nearWoodall
+     * @return RieselPrime
+     */
+    public function setNearWoodall(\RPPDb\RieselBundle\Entity\NearWoodall $nearWoodall = null)
+    {
+        $this->nearWoodall = $nearWoodall;
+
+        return $this;
+    }
+
+    /**
+     * Get nearWoodall
+     *
+     * @return \RPPDb\RieselBundle\Entity\NearWoodall 
+     */
+    public function getNearWoodall()
+    {
+        return $this->nearWoodall;
     }
 }
