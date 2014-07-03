@@ -1,0 +1,14 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+{% form_theme form 'RPPDbRieselBundle:Form:fields.html.twig' %}
+
+{% block title %}
+Edit contributor "{{ program }}"
+{% endblock title %}
+
+{% block header %}
+Edit contributor "{{ program }}"
+{% endblock header %}
+
+{% block content %}
+{{ form(form) }}
+{% endblock content %}

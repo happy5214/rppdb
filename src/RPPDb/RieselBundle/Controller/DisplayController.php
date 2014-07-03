@@ -26,8 +26,11 @@ class DisplayController extends Controller
      * @Template()
      */
     public function kAction($k) {
-        $rieselk = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselK')->findOneByNum($k);
-        return array('k' => $rieselk);
+        $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselK');
+        $rieselk = $repo->findOneByNum($k);
+        $previous = $repo->findPreviousK($k);
+        $next = $repo->findNextK($k);
+        return array('k' => $rieselk, 'previous' => $previous, 'next' => $next);
     }
     
     public function kdetailAction($k) {
@@ -63,5 +66,23 @@ class DisplayController extends Controller
             }
             return $this->render('RPPDbRieselBundle:Display:kdetail.html.twig', array('rieselk' => $rieselk, 'primes' => $renderedPrimes), $response);
         }
+    }
+    
+    /**
+     * @Route("/program/{id}", name="_riesel_display_program")
+     * @Template()
+     */
+    public function programAction($id) {
+        $program = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
+        return array('program' => $program);
+    }
+    
+    /**
+     * @Route("/contributor/{id}", name="_riesel_display_contributor")
+     * @Template()
+     */
+    public function contributorAction($id) {
+        $contributor = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
+        return array('contributor' => $contributor);
     }
 }

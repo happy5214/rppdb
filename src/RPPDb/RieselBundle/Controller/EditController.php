@@ -9,6 +9,10 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use RPPDb\RieselBundle\Entity\RieselK;
 use RPPDb\RieselBundle\Form\Type\RieselKType;
+use RPPDb\RieselBundle\Entity\Program;
+use RPPDb\RieselBundle\Form\Type\ProgramType;
+use RPPDb\RieselBundle\Entity\Contributor;
+use RPPDb\RieselBundle\Form\Type\ContributorType;
 
 class EditController extends Controller {
     /**
@@ -55,6 +59,96 @@ class EditController extends Controller {
 
             return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselk->getNum())));
         }
-        return array('k' => $rieselk->getNum(), 'form' => $form->createView());
+        return array('form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/program/{id}", name="_riesel_edit_program")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function programAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $program = $em->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
+        
+        $form = $this->createForm(new ProgramType(), $program);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_program', array('id' => $program->getId())));
+        }
+        return array('program' => $program, 'form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/add/program", name="_riesel_add_program")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function addProgramAction() {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $program = new Program();
+        
+        $form = $this->createForm(new ProgramType(), $program);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $em->persist($program);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_program', array('id' => $program->getId())));
+        }
+        return array('form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/contributor/{id}", name="_riesel_edit_contributor")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function contributorAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $contributor = $em->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
+        
+        $form = $this->createForm(new ContributorType(), $contributor);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_contributor', array('id' => $contributor->getId())));
+        }
+        return array('contributor' => $contributor, 'form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/add/contributor", name="_riesel_add_contributor")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function addContributorAction() {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $contributor = new Contributor();
+        
+        $form = $this->createForm(new ContributorType(), $contributor);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $em->persist($contributor);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_contributor', array('id' => $contributor->getId())));
+        }
+        return array('form' => $form->createView());
     }
 }

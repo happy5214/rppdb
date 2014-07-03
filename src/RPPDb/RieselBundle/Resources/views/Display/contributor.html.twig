@@ -1,0 +1,18 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+
+{% block title %}
+{{ contributor.name }}
+{% endblock title %}
+
+{% block header %}
+{{ contributor.name }}
+{% endblock header %}
+
+{% block content %}
+<p><a href="{{ path('_riesel_edit_contributor', {'id': contributor.id}) }}">[Edit]</a></p>
+<ul>
+<li>Prime Pages bio: {% if contributor.top5000 %}<a href="javascript:bio({{ contributor.top5000 }})">{{ contributor.top5000 }}</a>{% else %}None{% endif %}</li>
+<li>Home page: {% if contributor.link %}<a href="{{ contributor.link }}">{{ contributor.link }}</a>{% else %}None{% endif %}</li>
+<li>Primes: {{ contributor.primes|length }}</li>
+</ul>
+{% endblock content %}

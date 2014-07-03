@@ -31,9 +31,9 @@
 <table class="table1 primes" style="text-align: center; width: 100%;" data-prototype="{{ form_widget(form.primes.vars.prototype)|e }}">
 <thead><tr>
 <th><i>n</i></th>
-<th>Woodall</th>
 <th>Prime Pages entry</th>
 <th>Comment</th>
+<th>Woodall</th>
 <th>Twin</th>
 <th>Sophie Germain</th>
 <th>100th prime</th>
@@ -59,9 +59,9 @@
 
 <tr>
 <td>{{ form_widget(form.n, {'attr': {'class': 'prime_edit'}}) }}</td>
-<td>{{ form_widget(form.woodall, {'attr': {'class': 'prime_edit'}}) }}</td>
 <td>{{ form_widget(form.utm, {'attr': {'class': 'prime_edit'}}) }}</td>
 <td>{{ form_widget(form.comment, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.woodall, {'attr': {'class': 'prime_edit'}}) }}</td>
 <td>{{ form_widget(form.isTwin) }}</td>
 <td>{{ form_widget(form.isSG) }}</td>
 <td>{{ form_widget(form.is100th) }}</td>
@@ -71,5 +71,24 @@
 <td>{{ form_widget(form.foundBy) }}</td>
 <td>{{ form_widget(form.foundOn, {'attr': {'class': 'prime_edit'}}) }}</td>
 </tr>
+
+{% endblock %}
+
+{% block program_widget %}
+
+{{ form_row(form.program) }}
+{{ form_row(form.version) }}
+
+{{ form_row(form.save) }}
+
+{% endblock %}
+
+{% block contributor_widget %}
+
+{{ form_row(form.name) }}
+{{ form_row(form.top5000) }}
+{{ form_row(form.link) }}
+
+{{ form_row(form.save) }}
 
 {% endblock %}
