@@ -1,0 +1,100 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+
+{% block title %}
+Woodall and Near Woodall primes
+{% endblock title %}
+
+{% block header %}
+Woodall and Near Woodall primes
+{% endblock header %}
+
+{% block content %}
+
+<h2>Woodall Primes</h2>
+<table class="table1">
+<thead>
+<tr>
+<th>No.</th>
+<th><i>n</i></th>
+<!--<th># digits</th>-->
+<th>Normalized form</th>
+<!--<th>Finder</th>
+<th>Date</th>-->
+</tr>
+</thead>
+<tbody>
+{% for prime in woodall %}
+<tr>
+<th scope="row">{{ loop.index }}</th>
+<td>{{ prime.woodall }}</td>
+
+<td>{{ prime.styledString|raw }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+
+<h2>Near Woodall primes (form (<i>n</i>+1)·2<sup><i>n</i></sup>-1)</h2>
+<table class="table1">
+<thead>
+<tr>
+<th>No.</th>
+<th><i>n</i></th>
+<!--<th># digits</th>-->
+<th>Normalized form</th>
+<!--<th>Finder</th>
+<th>Date</th>-->
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1</th>
+<td>1</td>
+
+<td>2<sup>2</sup>-1</td>
+</tr>
+{% for prime in plus %}
+<tr>
+<th scope="row">{{ loop.index + 1 }}</th>
+<td>{{ prime.n }}</td>
+
+<td>{{ prime.prime.styledString|raw }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+
+<h2>Near Woodall primes (form (<i>n</i>-1)·2<sup><i>n</i></sup>-1)</h2>
+<table class="table1">
+<thead>
+<tr>
+<th>No.</th>
+<th><i>n</i></th>
+<!--<th># digits</th>-->
+<th>Normalized form</th>
+<!--<th>Finder</th>
+<th>Date</th>-->
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1</th>
+<td>2</td>
+
+<td>2<sup>2</sup>-1</td>
+</tr>
+{% for prime in minus %}
+<tr>
+<th scope="row">{{ loop.index + 1 }}</th>
+<td>{{ prime.n }}</td>
+
+<td>{{ prime.prime.styledString|raw }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock content %}

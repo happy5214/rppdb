@@ -28,7 +28,7 @@ class NearWoodall {
     private $n;
 
     /**
-     * @var boolean
+     * @var string
      *
      * @ORM\Column(name="sign", type="string", length=1)
      */
@@ -111,5 +111,31 @@ class NearWoodall {
     public function getPrime()
     {
         return $this->prime;
+    }
+    
+    /**
+     * Get string (plain text) rendering
+     * 
+     * @return string
+     */
+    public function __toString() {
+        if ($this->sign == "/") {
+            return "(1+1)*2^1-1; also (2-1)*2^2-1";
+        } else {
+            return "({$this->n}{$this->sign}1)*2^{$this->n}-1";
+        }
+    }
+    
+    /**
+     * Get string (styled) rendering
+     * 
+     * @return string
+     */
+    public function styledString() {
+        if ($this->sign == "/") {
+            return "(1+1)&middot;2<sup>1</sup>-1; also (2-1)&middot;2<sup>2</sup>-1";
+        } else {
+            return "({$this->n}{$this->sign}1)&middot;2<sup>{$this->n}</sup>-1";
+        }
     }
 }

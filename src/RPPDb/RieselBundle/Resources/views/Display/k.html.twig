@@ -47,6 +47,7 @@
 <th>Twin tested by</th>
 <th>Found by</th>
 <th>Found on</th>
+<th>Near Woodall</th>
 </tr>
 </thead>
 <tbody>
@@ -68,6 +69,7 @@
 <td>{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}{% else %}N/A{% endif %}{% endif %}</td>
 <td>{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}{% endif %}</td>
 <td>{{ prime.foundOn is empty ? "" : prime.foundOn|date("Y-m-d") }}</td>
+<td>{% if prime.nearWoodall %}{{ prime.nearWoodall.styledString|raw }}{% endif %}</td>
 </tr>
 {% endfor %}
 </tbody>

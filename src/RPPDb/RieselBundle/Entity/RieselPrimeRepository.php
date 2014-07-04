@@ -26,4 +26,29 @@ class RieselPrimeRepository extends EntityRepository {
             )->setParameters(array('k' => $k, 'limit' => $limit))
             ->getResult();
     }
+    
+    public function findByRieselKAndN($rieselk, $n) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.rieselk = :k AND p.n = :n'
+            )->setParameters(array('k' => $rieselk, 'n' => $n))
+            ->setMaxResults(1)
+            ->getOneOrNullResult();
+    }
+    
+    public function findByKNumAndN($k, $n) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselk rieselk WHERE rieselk.num = :k AND p.n = :n'
+            )->setParameters(array('k' => $k, 'n' => $n))
+            ->setMaxResults(1)
+            ->getOneOrNullResult();
+    }
+    
+    public function findWoodallPrimes() {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.woodall IS NOT NULL ORDER BY p.woodall ASC'
+            )->getResult();
+    }
 }
