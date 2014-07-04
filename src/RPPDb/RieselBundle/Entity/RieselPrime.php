@@ -344,6 +344,9 @@ class RieselPrime
         if ($this->woodall) {
             $string = "<span class=\"wod\" title=\"Woodall: {$this->woodall}*2^{$this->woodall}-1\">$string</span>";
         }
+        if ($this->nearWoodall) {
+            $string = "$string<a class=\"cmt\" title=\"Near Woodall: {$this->nearWoodall}\">*</a>";
+        }
         if ($this->comment) {
             $string = "$string<a class=\"cmt\" title=\"{$this->comment}\">*</a>";
         }
@@ -463,5 +466,33 @@ class RieselPrime
     public function getNearWoodall()
     {
         return $this->nearWoodall;
+    }
+    
+    /**
+     * Get string (plain text) rendering
+     * 
+     * @return string
+     */
+    public function __toString() {
+        $knum = $this->rieselk->getNum();
+        if ($knum == 1) {
+            return "2^{$this->n}-1";
+        } else {
+            return "{$knum}*2^{$this->n}-1";
+        }
+    }
+    
+    /**
+     * Get string (styled) rendering
+     * 
+     * @return string
+     */
+    public function styledString() {
+        $knum = $this->rieselk->getNum();
+        if ($knum == 1) {
+            return "2<sup>{$this->n}</sup>-1";
+        } else {
+            return "{$knum}&middot;2<sup>{$this->n}</sup>-1";
+        }
     }
 }

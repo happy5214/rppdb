@@ -85,4 +85,16 @@ class DisplayController extends Controller
         $contributor = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
         return array('contributor' => $contributor);
     }
+    
+    /**
+     * @Route("/woodall", name="_riesel_display_woodall")
+     * @Template()
+     */
+    public function woodallAction() {
+        $woodall = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findWoodallPrimes();
+        $nwrepo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:NearWoodall');
+        $plus = $nwrepo->findPlus();
+        $minus = $nwrepo->findMinus();
+        return array('woodall' => $woodall, 'plus' => $plus, 'minus' => $minus);
+    }
 }

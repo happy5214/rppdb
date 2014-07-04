@@ -13,6 +13,8 @@ use RPPDb\RieselBundle\Entity\Program;
 use RPPDb\RieselBundle\Form\Type\ProgramType;
 use RPPDb\RieselBundle\Entity\Contributor;
 use RPPDb\RieselBundle\Form\Type\ContributorType;
+use RPPDb\RieselBundle\Entity\NearWoodall;
+use RPPDb\RieselBundle\Form\Type\NearWoodallType;
 
 class EditController extends Controller {
     /**
@@ -148,6 +150,36 @@ class EditController extends Controller {
             $em->flush();
 
             return $this->redirect($this->generateUrl('_riesel_display_contributor', array('id' => $contributor->getId())));
+        }
+        return array('form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/add/nearwoodall", name="_riesel_add_nearwoodall")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function addNearWoodallAction() {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $nearwoodall = new NearWoodall();
+        
+        $form = $this->createForm(new NearWoodallType(), $nearwoodall);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $rieselk = $form->get('primek')->getData();
+            $rieseln = $form->get('primen')->getData();
+            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
+            if (is_null($rieselprime)) {
+                return array('form' => $form->createView());
+            }
+            $nearwoodall->setPrime($rieselprime);
+            $em->persist($nearwoodall);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselk)));
         }
         return array('form' => $form->createView());
     }
