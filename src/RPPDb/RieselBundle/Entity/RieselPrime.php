@@ -346,8 +346,8 @@ class RieselPrime
         if ($this->isTwin) {
             $string = "<span class=\"twi\">$string</span>";
         }
-        if ($this->woodall) {
-            $string = "<span class=\"wod\" title=\"Woodall: {$this->woodall}*2^{$this->woodall}-1\">$string</span>";
+        if ($this->woodallObject) {
+            $string = "<span class=\"wod\" title=\"Woodall: {$this->woodallObject}\">$string</span>";
         }
         if ($this->nearWoodall) {
             $string = "$string<a class=\"cmt\" title=\"Near Woodall: {$this->nearWoodall}\">*</a>";
