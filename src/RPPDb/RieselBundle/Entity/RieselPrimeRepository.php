@@ -48,7 +48,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findWoodallPrimes() {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.woodall IS NOT NULL ORDER BY p.woodall ASC'
+                'SELECT p, k FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselk k WHERE p.woodall IS NOT NULL ORDER BY p.woodall ASC'
             )->getResult();
     }
 }
