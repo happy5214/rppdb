@@ -16,7 +16,7 @@ Woodall and Near Woodall primes
 <tr>
 <th>No.</th>
 <th><i>n</i></th>
-<!--<th># digits</th>-->
+<th># digits</th>
 <th>Normalized form</th>
 <!--<th>Finder</th>
 <th>Date</th>-->
@@ -27,7 +27,7 @@ Woodall and Near Woodall primes
 <tr>
 <th scope="row">{{ loop.index }}</th>
 <td>{{ prime.n }}</td>
-
+<td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 </tr>
 {% endfor %}
