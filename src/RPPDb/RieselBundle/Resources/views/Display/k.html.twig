@@ -53,7 +53,7 @@
 <tbody>
 {% for prime in k.primes %}
 <tr>
-<td>{{ loop.index }}</td>
+<th scope="row">{{ loop.index }}</th>
 <td>{{ prime.n }}</td>
 <td>{% if prime.utm %}<a href="javascript:utm({{ prime.utm }})">{{ prime.utm }}</a>{% endif %}</td>
 <td>{% if prime.woodall %}{{ prime.woodall }}&middot;2<sup>{{ prime.woodall }}</sup>-1{% endif %}</td>
