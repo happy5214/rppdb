@@ -25,7 +25,7 @@ class RieselPrime
      * @ORM\ManyToOne(targetEntity="RieselK", inversedBy="primes")
      * @ORM\JoinColumn(name="rieselk_id", referencedColumnName="id")
      */
-    private $rieselk;
+    private $rieselK;
     
     /**
      * @var integer
@@ -112,6 +112,11 @@ class RieselPrime
      * @ORM\OneToOne(targetEntity="NearWoodall", mappedBy="prime")
      */
     private $nearWoodall;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Woodall", mappedBy="prime")
+     */
+    private $woodallObject;
 
     /**
      * Get id
@@ -425,12 +430,12 @@ class RieselPrime
     /**
      * Set rieselk
      *
-     * @param \RPPDb\RieselBundle\Entity\RieselK $rieselk
+     * @param \RPPDb\RieselBundle\Entity\RieselK $rieselK
      * @return RieselPrime
      */
-    public function setRieselk(\RPPDb\RieselBundle\Entity\RieselK $rieselk = null)
+    public function setRieselK(\RPPDb\RieselBundle\Entity\RieselK $rieselK = null)
     {
-        $this->rieselk = $rieselk;
+        $this->rieselK = $rieselK;
 
         return $this;
     }
@@ -440,9 +445,9 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\RieselK 
      */
-    public function getRieselk()
+    public function getRieselK()
     {
-        return $this->rieselk;
+        return $this->rieselK;
     }
 
     /**
@@ -494,5 +499,28 @@ class RieselPrime
         } else {
             return "{$knum}&middot;2<sup>{$this->n}</sup>-1";
         }
+    }
+
+    /**
+     * Set woodallObject
+     *
+     * @param \RPPDb\RieselBundle\Entity\Woodall $woodallObject
+     * @return RieselPrime
+     */
+    public function setWoodallObject(\RPPDb\RieselBundle\Entity\Woodall $woodallObject = null)
+    {
+        $this->woodallObject = $woodallObject;
+
+        return $this;
+    }
+
+    /**
+     * Get woodallObject
+     *
+     * @return \RPPDb\RieselBundle\Entity\Woodall 
+     */
+    public function getWoodallObject()
+    {
+        return $this->woodallObject;
     }
 }
