@@ -12,3 +12,4 @@
 /src/Acme/*
 /*.sh
 .directory
+*~

@@ -34,7 +34,11 @@ class Woodall
      * @ORM\Column(name="digits", type="integer")
      */
     private $digits;
-
+    
+    /**
+     * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="woodallObject")
+     */
+    private $prime;
 
     /**
      * Get id
@@ -90,5 +94,46 @@ class Woodall
     public function getDigits()
     {
         return $this->digits;
+    }
+    
+    /**
+     * Get string (plain text) rendering
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return "{$this->n}*2^{$this->n}-1";
+    }
+    
+    /**
+     * Get string (styled) rendering
+     * 
+     * @return string
+     */
+    public function styledString() {
+        return "{$this->n}&middot;2<sup>{$this->n}</sup>-1";
+    }
+
+    /**
+     * Set prime
+     *
+     * @param \RPPDb\RieselBundle\Entity\RieselPrime $prime
+     * @return Woodall
+     */
+    public function setPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime = null)
+    {
+        $this->prime = $prime;
+
+        return $this;
+    }
+
+    /**
+     * Get prime
+     *
+     * @return \RPPDb\RieselBundle\Entity\RieselPrime 
+     */
+    public function getPrime()
+    {
+        return $this->prime;
     }
 }
