@@ -10,3 +10,5 @@
 /bin/
 /composer.phar
 /src/Acme/*
+/*.sh
+.directory
