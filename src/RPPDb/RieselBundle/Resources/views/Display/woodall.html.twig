@@ -26,9 +26,9 @@ Woodall and Near Woodall primes
 {% for prime in woodall %}
 <tr>
 <th scope="row">{{ loop.index }}</th>
-<td>{{ prime.woodall }}</td>
+<td>{{ prime.n }}</td>
 
-<td>{{ prime.styledString|raw }}</td>
+<td>{{ prime.prime.styledString|raw }}</td>
 </tr>
 {% endfor %}
 </tbody>

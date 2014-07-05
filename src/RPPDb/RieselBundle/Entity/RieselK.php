@@ -128,7 +128,7 @@ class RieselK
     private $lastEdit;
     
     /**
-     * @ORM\OneToMany(targetEntity="RieselPrime", mappedBy="rieselk", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="RieselPrime", mappedBy="rieselK", cascade={"persist"})
      * @ORM\OrderBy({"n" = "ASC"})
      */
     protected $primes;

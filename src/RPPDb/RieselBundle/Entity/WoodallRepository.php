@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class WoodallRepository extends EntityRepository
 {
+    public function findPrimes() {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT w, p, k, nw FROM RPPDbRieselBundle:Woodall w JOIN w.prime p JOIN p.rieselK k LEFT JOIN p.nearWoodall nw ORDER BY w.n ASC"
+            )->getResult();
+    }
 }

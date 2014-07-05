@@ -479,7 +479,7 @@ class RieselPrime
      * @return string
      */
     public function __toString() {
-        $knum = $this->rieselk->getNum();
+        $knum = $this->rieselK->getNum();
         if ($knum == 1) {
             return "2^{$this->n}-1";
         } else {
@@ -493,7 +493,7 @@ class RieselPrime
      * @return string
      */
     public function styledString() {
-        $knum = $this->rieselk->getNum();
+        $knum = $this->rieselK->getNum();
         if ($knum == 1) {
             return "2<sup>{$this->n}</sup>-1";
         } else {
