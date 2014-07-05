@@ -30,7 +30,7 @@ class RieselKType extends AbstractType
                 'required'  => true,
             ))
             ->add('reservedBy', 'text', array('required' => false))
-            ->add('lastUpdate', 'date', array('required' => false))
+            ->add('lastUpdate', 'date', array('required' => false, 'widget' => 'single_text'))
             ->add('coveringSet', 'text', array('required' => false))
             ->add('primes', 'collection', array(
                 'type'         => new RieselPrimeType(),
