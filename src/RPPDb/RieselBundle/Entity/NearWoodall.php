@@ -35,6 +35,13 @@ class NearWoodall {
     private $sign;
     
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="digits", type="integer")
+     */
+    private $digits;
+    
+    /**
      * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="nearWoodall")
      */
     private $prime;
