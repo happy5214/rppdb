@@ -42,7 +42,7 @@ Woodall and Near Woodall primes
 <tr>
 <th>No.</th>
 <th><i>n</i></th>
-<!--<th># digits</th>-->
+<th># digits</th>
 <th>Normalized form</th>
 <!--<th>Finder</th>
 <th>Date</th>-->
@@ -52,14 +52,14 @@ Woodall and Near Woodall primes
 <tr>
 <th scope="row">1</th>
 <td>1</td>
-
+<td>1</td>
 <td>2<sup>2</sup>-1</td>
 </tr>
 {% for prime in plus %}
 <tr>
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
-
+<td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 </tr>
 {% endfor %}
@@ -74,7 +74,7 @@ Woodall and Near Woodall primes
 <tr>
 <th>No.</th>
 <th><i>n</i></th>
-<!--<th># digits</th>-->
+<th># digits</th>
 <th>Normalized form</th>
 <!--<th>Finder</th>
 <th>Date</th>-->
@@ -84,14 +84,14 @@ Woodall and Near Woodall primes
 <tr>
 <th scope="row">1</th>
 <td>2</td>
-
+<td>1</td>
 <td>2<sup>2</sup>-1</td>
 </tr>
 {% for prime in minus %}
 <tr>
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
-
+<td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 </tr>
 {% endfor %}
