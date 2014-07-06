@@ -145,4 +145,27 @@ class NearWoodall {
             return "({$this->n}{$this->sign}1)&middot;2<sup>{$this->n}</sup>-1";
         }
     }
+
+    /**
+     * Set digits
+     *
+     * @param integer $digits
+     * @return NearWoodall
+     */
+    public function setDigits($digits)
+    {
+        $this->digits = $digits;
+
+        return $this;
+    }
+
+    /**
+     * Get digits
+     *
+     * @return integer 
+     */
+    public function getDigits()
+    {
+        return $this->digits;
+    }
 }
