@@ -56,7 +56,7 @@
 <th scope="row">{{ loop.index }}</th>
 <td>{{ prime.n }}</td>
 <td>{% if prime.utm %}<a href="javascript:utm({{ prime.utm }})">{{ prime.utm }}</a>{% endif %}</td>
-<td>{% if prime.woodallObject %}{{ prime.woodallObject.styledString|raw }}{% endif %}</td>
+<td>{% if prime.woodall %}{{ prime.woodall.styledString|raw }}{% endif %}</td>
 <td>{{ prime.isTwin ? "Yes" : "" }}</td>
 <td>{{ prime.isSG ? "Yes" : "" }}</td>
 <td>{{ prime.comment|raw }}</td>

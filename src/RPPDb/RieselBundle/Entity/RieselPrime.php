@@ -37,13 +37,6 @@ class RieselPrime
     /**
      * @var integer
      *
-     * @ORM\Column(name="woodall", type="integer", nullable=true)
-     */
-    private $woodall;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="utm", type="integer", nullable=true)
      */
     private $utm;
@@ -116,7 +109,7 @@ class RieselPrime
     /**
      * @ORM\OneToOne(targetEntity="Woodall", mappedBy="prime")
      */
-    private $woodallObject;
+    private $woodall;
 
     /**
      * Get id
@@ -149,29 +142,6 @@ class RieselPrime
     public function getN()
     {
         return $this->n;
-    }
-
-    /**
-     * Set woodall
-     *
-     * @param integer $woodall
-     * @return RieselPrime
-     */
-    public function setWoodall($woodall)
-    {
-        $this->woodall = $woodall;
-
-        return $this;
-    }
-
-    /**
-     * Get woodall
-     *
-     * @return integer 
-     */
-    public function getWoodall()
-    {
-        return $this->woodall;
     }
 
     /**
@@ -346,8 +316,8 @@ class RieselPrime
         if ($this->isTwin) {
             $string = "<span class=\"twi\">$string</span>";
         }
-        if ($this->woodallObject) {
-            $string = "<span class=\"wod\" title=\"Woodall: {$this->woodallObject}\">$string</span>";
+        if ($this->woodall) {
+            $string = "<span class=\"wod\" title=\"Woodall: {$this->woodall}\">$string</span>";
         }
         if ($this->nearWoodall) {
             $string = "$string<a class=\"cmt\" title=\"Near Woodall: {$this->nearWoodall}\">*</a>";
@@ -502,25 +472,25 @@ class RieselPrime
     }
 
     /**
-     * Set woodallObject
+     * Set woodall
      *
-     * @param \RPPDb\RieselBundle\Entity\Woodall $woodallObject
+     * @param \RPPDb\RieselBundle\Entity\Woodall $woodall
      * @return RieselPrime
      */
-    public function setWoodallObject(\RPPDb\RieselBundle\Entity\Woodall $woodallObject = null)
+    public function setWoodall(\RPPDb\RieselBundle\Entity\Woodall $woodall = null)
     {
-        $this->woodallObject = $woodallObject;
+        $this->woodall = $woodall;
 
         return $this;
     }
 
     /**
-     * Get woodallObject
+     * Get woodall
      *
      * @return \RPPDb\RieselBundle\Entity\Woodall 
      */
-    public function getWoodallObject()
+    public function getWoodall()
     {
-        return $this->woodallObject;
+        return $this->woodall;
     }
 }
