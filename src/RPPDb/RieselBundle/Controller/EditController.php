@@ -155,6 +155,38 @@ class EditController extends Controller {
     }
     
     /**
+     * @Route("/nearwoodall/{id}", name="_riesel_edit_nearwoodall")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function nearWoodallAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+        
+        $nearwoodall = $em->getRepository('RPPDbRieselBundle:NearWoodall')->findOneById($id);
+        
+        $form = $this->createForm(new NearWoodallType(), $nearwoodall);
+        $prime = $nearwoodall->getPrime();
+        $form->get('primek')->setData($prime->getRieselK()->getNum());
+        $form->get('primen')->setData($prime->getN());
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $rieselk = $form->get('primek')->getData();
+            $rieseln = $form->get('primen')->getData();
+            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
+            if (is_null($rieselprime)) {
+                return array('form' => $form->createView());
+            }
+            $nearwoodall->setPrime($rieselprime);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('_riesel_display_woodall'));
+        }
+        return array('nearwoodall' => $nearwoodall, 'form' => $form->createView());
+    }
+    
+    /**
      * @Route("/add/nearwoodall", name="_riesel_add_nearwoodall")
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
@@ -179,7 +211,7 @@ class EditController extends Controller {
             $em->persist($nearwoodall);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselk)));
+            return $this->redirect($this->generateUrl('_riesel_display_woodall'));
         }
         return array('form' => $form->createView());
     }

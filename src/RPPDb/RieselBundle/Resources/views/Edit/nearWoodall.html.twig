@@ -1,0 +1,14 @@
+{% extends "RPPDbRieselBundle::base.html.twig" %}
+{% form_theme form 'RPPDbRieselBundle:Form:fields.html.twig' %}
+
+{% block title %}
+Edit near Woodall prime {{ nearwoodall }}
+{% endblock title %}
+
+{% block header %}
+Edit near Woodall prime {{ nearwoodall.styledString|raw }}
+{% endblock header %}
+
+{% block content %}
+{{ form(form) }}
+{% endblock content %}
