@@ -36,7 +36,7 @@ class Woodall
     private $digits;
     
     /**
-     * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="woodallObject")
+     * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="woodall")
      */
     private $prime;
 
