@@ -91,7 +91,7 @@ class DisplayController extends Controller
      * @Template()
      */
     public function woodallAction() {
-        $woodall = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findWoodallPrimes();
+        $woodall = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:Woodall')->findPrimes();
         $nwrepo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:NearWoodall');
         $plus = $nwrepo->findPlus();
         $minus = $nwrepo->findMinus();

@@ -14,7 +14,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByKBelow($k, $limit) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n < :limit AND p.rieselk = :k ORDER BY p.n ASC'
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n < :limit AND p.rieselK = :k ORDER BY p.n ASC'
             )->setParameters(array('k' => $k, 'limit' => $limit))
             ->getResult();
     }
@@ -22,7 +22,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByKAbove($k, $limit) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n > :limit AND p.rieselk = :k ORDER BY p.n ASC'
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n > :limit AND p.rieselK = :k ORDER BY p.n ASC'
             )->setParameters(array('k' => $k, 'limit' => $limit))
             ->getResult();
     }
@@ -30,7 +30,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByRieselKAndN($rieselk, $n) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.rieselk = :k AND p.n = :n'
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.rieselK = :k AND p.n = :n'
             )->setParameters(array('k' => $rieselk, 'n' => $n))
             ->setMaxResults(1)
             ->getOneOrNullResult();
@@ -39,7 +39,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByKNumAndN($k, $n) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselk rieselk WHERE rieselk.num = :k AND p.n = :n'
+                'SELECT p FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselK k WHERE k.num = :k AND p.n = :n'
             )->setParameters(array('k' => $k, 'n' => $n))
             ->setMaxResults(1)
             ->getOneOrNullResult();
