@@ -16,7 +16,6 @@ class RieselPrimeType extends AbstractType
     {
         $builder
             ->add('n', 'integer')
-            ->add('woodall', 'integer', array('required' => false))
             ->add('utm', 'integer', array('required' => false))
             ->add('comment', 'text', array('required' => false))
             ->add('isTwin', 'checkbox', array('required' => false))
