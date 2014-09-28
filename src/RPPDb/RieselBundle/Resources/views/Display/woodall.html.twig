@@ -30,7 +30,7 @@ Woodall and Near Woodall primes
 <td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOn|date("Y-m-d") }}</td>
+<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -66,7 +66,7 @@ Woodall and Near Woodall primes
 <td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOn|date("Y-m-d") }}</td>
+<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -102,7 +102,7 @@ Woodall and Near Woodall primes
 <td>{{ prime.digits }}</td>
 <td>{{ prime.prime.styledString|raw }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOn|date("Y-m-d") }}</td>
+<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>

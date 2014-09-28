@@ -470,6 +470,26 @@ class RieselPrime
             return "{$knum}&middot;2<sup>{$this->n}</sup>-1";
         }
     }
+    
+    /**
+     * Get foundOn as string
+     * 
+     * @return string
+     */
+    public function foundOnString() {
+        $foundOn = $this->foundOn;
+        if ($foundOn->format("Y") >= 5000 && $foundOn->format("Y") < 6000) {
+            $newDate = clone $foundOn;
+            $newDate->modify("-4000 years");
+            return $newDate->format("Y");
+        } elseif ($foundOn->format("Y") >= 6000 && $foundOn->format("Y") < 7000) {
+            $newDate = clone $foundOn;
+            $newDate->modify("-5000 years");
+            return $newDate->format("Y-m");
+        } else {
+            return $foundOn->format("Y-m-d");
+        }
+    }
 
     /**
      * Set woodall
