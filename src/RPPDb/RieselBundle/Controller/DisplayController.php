@@ -104,18 +104,30 @@ class DisplayController extends Controller {
     public function firstTwinAction() {
         $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
         $ks = array();
+        $jumpingKs = array();
+        $jumping = 0;
         $ks[0] = array(0 => "-");
         for ($j = 1; $j <= 9; $j++) {
             $result = $repo->findTwinByN($j);
-            $ks[0][] = $result[0]["num"];
+            $num = $result[0]["num"];
+            $ks[0][] = $num;
+            if ($num > $jumping) {
+                $jumping = $num;
+                $jumpingKs[$j] = true;
+            }
         }
         for ($i = 1; $i <= 7; $i ++) {
             $ks[$i] = array();
             for ($j = 0; $j <= 9; $j++) {
                 $result = $repo->findTwinByN($i * 10 + $j);
-                $ks[$i][] = $result[0]["num"];
+                $num = $result[0]["num"];
+                $ks[$i][] = $num;
+                if ($num > $jumping) {
+                    $jumping = $num;
+                    $jumpingKs[$i * 10 + $j] = true;
+                }
             }
         }
-        return array('ks' => $ks);
+        return array('ks' => $ks, 'jumpingKs' => $jumpingKs);
     }
 }
