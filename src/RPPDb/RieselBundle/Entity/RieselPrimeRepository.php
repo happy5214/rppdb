@@ -51,4 +51,13 @@ class RieselPrimeRepository extends EntityRepository {
                 'SELECT p, k, nw FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselk k LEFT JOIN p.nearWoodall nw WHERE p.woodall IS NOT NULL ORDER BY p.woodall ASC'
             )->getResult();
     }
+    
+    public function findTwinByN($n) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT k.num FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselK k WHERE p.n = :n AND p.isTwin = true ORDER BY k.num ASC'
+           )->setParameters(array('n' => $n))
+            ->setMaxResults(1)
+            ->getResult();
+    }
 }

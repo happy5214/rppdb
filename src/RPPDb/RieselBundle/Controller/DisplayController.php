@@ -96,4 +96,26 @@ class DisplayController extends Controller {
         $minus = $nwRepo->findMinus();
         return array('woodall' => $woodall, 'plus' => $plus, 'minus' => $minus);
     }
+    
+    /**
+     * @Route("/firsttwin", name="_riesel_display_firsttwin")
+     * @Template()
+     */
+    public function firstTwinAction() {
+        $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
+        $ks = array();
+        $ks[0] = array(0 => "-");
+        for ($j = 1; $j <= 9; $j++) {
+            $result = $repo->findTwinByN($j);
+            $ks[0][] = $result[0]["num"];
+        }
+        for ($i = 1; $i <= 7; $i ++) {
+            $ks[$i] = array();
+            for ($j = 0; $j <= 9; $j++) {
+                $result = $repo->findTwinByN($i * 10 + $j);
+                $ks[$i][] = $result[0]["num"];
+            }
+        }
+        return array('ks' => $ks);
+    }
 }
