@@ -163,4 +163,8 @@ class Contributor
     {
         return $this->primes;
     }
+    
+    public function __toString() {
+        return $this->name;
+    }
 }
