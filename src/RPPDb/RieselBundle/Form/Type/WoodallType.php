@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class NearWoodallType extends AbstractType
+class WoodallType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -19,7 +19,6 @@ class NearWoodallType extends AbstractType
             ->add('primen', 'integer', array('label' => "n of normalized form", 'mapped' => false))
             ->add('n', 'integer', array('label' => "n"))
             ->add('digits', 'integer', array('label' => "number of digits"))
-            ->add('sign', 'choice', array('label' => "Sign (use '/' for 2^2-1)", 'choices' => array('-' => '-', '+' => '+', '/' => '/')))
             ->add('save', 'submit')
         ;
     }
@@ -30,7 +29,7 @@ class NearWoodallType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RPPDb\RieselBundle\Entity\NearWoodall'
+            'data_class' => 'RPPDb\RieselBundle\Entity\Woodall'
         ));
     }
 
@@ -39,6 +38,6 @@ class NearWoodallType extends AbstractType
      */
     public function getName()
     {
-        return 'nearwoodall';
+        return 'woodall';
     }
 }

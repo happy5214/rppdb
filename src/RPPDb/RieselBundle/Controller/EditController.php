@@ -15,6 +15,8 @@ use RPPDb\RieselBundle\Entity\Contributor;
 use RPPDb\RieselBundle\Form\Type\ContributorType;
 use RPPDb\RieselBundle\Entity\NearWoodall;
 use RPPDb\RieselBundle\Form\Type\NearWoodallType;
+use RPPDb\RieselBundle\Entity\Woodall;
+use RPPDb\RieselBundle\Form\Type\WoodallType;
 
 class EditController extends Controller {
     /**
@@ -209,6 +211,68 @@ class EditController extends Controller {
             }
             $nearwoodall->setPrime($rieselprime);
             $em->persist($nearwoodall);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('_riesel_display_woodall'));
+        }
+        return array('form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/woodall/{id}", name="_riesel_edit_woodall")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function woodallAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+        
+        $woodall = $em->getRepository('RPPDbRieselBundle:Woodall')->findOneById($id);
+        
+        $form = $this->createForm(new WoodallType(), $woodall);
+        $prime = $woodall->getPrime();
+        $form->get('primek')->setData($prime->getRieselK()->getNum());
+        $form->get('primen')->setData($prime->getN());
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $rieselk = $form->get('primek')->getData();
+            $rieseln = $form->get('primen')->getData();
+            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
+            if (is_null($rieselprime)) {
+                return array('form' => $form->createView());
+            }
+            $woodall->setPrime($rieselprime);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('_riesel_display_woodall'));
+        }
+        return array('woodall' => $woodall, 'form' => $form->createView());
+    }
+    
+    /**
+     * @Route("/add/woodall", name="_riesel_add_woodall")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function addWoodallAction() {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+     
+        $woodall = new Woodall();
+        
+        $form = $this->createForm(new WoodallType(), $woodall);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $rieselk = $form->get('primek')->getData();
+            $rieseln = $form->get('primen')->getData();
+            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
+            if (is_null($rieselprime)) {
+                return array('form' => $form->createView());
+            }
+            $woodall->setPrime($rieselprime);
+            $em->persist($woodall);
             $em->flush();
 
             return $this->redirect($this->generateUrl('_riesel_display_woodall'));
