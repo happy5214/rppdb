@@ -105,7 +105,7 @@ class RieselPrime
     private $woodall;
     
     /**
-     * @ORM\OneToOne(targetEntity="Comment", mappedBy="prime")
+     * @ORM\OneToOne(targetEntity="Comment", mappedBy="prime", cascade={"persist"})
      */
     private $comment;
 
@@ -510,5 +510,34 @@ class RieselPrime
     public function getComment()
     {
         return $this->comment;
+    }
+    
+    /**
+     * Set comment text
+     *
+     * @param string $comment
+     * @return RieselPrime
+     */
+    public function setCommentStr($comment = null)
+    {
+        if ($comment) {
+            if (is_null($this->comment)) {
+                $this->comment = new \RPPDb\RieselBundle\Entity\Comment();
+                $this->comment->setPrime($this);
+            }
+            $this->comment->setContents($comment);
+        }       
+        
+        return $this;
+    }
+
+    /**
+     * Get comment text
+     *
+     * @return string
+     */
+    public function getCommentStr()
+    {
+        return strval($this->comment ?: '');
     }
 }
