@@ -42,13 +42,6 @@ class RieselPrime
     private $utm;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
-     */
-    private $comment;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="is_twin", type="boolean")
@@ -110,6 +103,11 @@ class RieselPrime
      * @ORM\OneToOne(targetEntity="Woodall", mappedBy="prime")
      */
     private $woodall;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Comment", mappedBy="prime")
+     */
+    private $comment;
 
     /**
      * Get id
@@ -165,29 +163,6 @@ class RieselPrime
     public function getUtm()
     {
         return $this->utm;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     * @return RieselPrime
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string 
-     */
-    public function getComment()
-    {
-        return $this->comment;
     }
 
     /**
@@ -512,5 +487,28 @@ class RieselPrime
     public function getWoodall()
     {
         return $this->woodall;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param \RPPDb\RieselBundle\Entity\Comment $comment
+     * @return RieselPrime
+     */
+    public function setComment(\RPPDb\RieselBundle\Entity\Comment $comment = null)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \RPPDb\RieselBundle\Entity\Comment 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
