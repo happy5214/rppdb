@@ -453,8 +453,7 @@ class RieselK
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $primes
      * @return RieselK
      */
-    public function addPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime)
-    {
+    public function addPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime) {
         $this->primes[] = $prime;
         $prime->setRieselK($this);
 
@@ -466,8 +465,7 @@ class RieselK
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $primes
      */
-    public function removePrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime)
-    {
+    public function removePrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime) {
         $this->primes->removeElement($prime);
     }
 
@@ -476,8 +474,7 @@ class RieselK
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPrimes()
-    {
+    public function getPrimes() {
         return $this->primes;
     }
 
@@ -487,8 +484,7 @@ class RieselK
      * @param \DateTime $lastEdit
      * @return RieselK
      */
-    public function setLastEdit($lastEdit)
-    {
+    public function setLastEdit($lastEdit) {
         $this->lastEdit = $lastEdit;
 
         return $this;
@@ -499,8 +495,7 @@ class RieselK
      *
      * @return \DateTime 
      */
-    public function getLastEdit()
-    {
+    public function getLastEdit() {
         return $this->lastEdit;
     }
 }

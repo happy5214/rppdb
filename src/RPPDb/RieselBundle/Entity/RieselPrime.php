@@ -114,8 +114,7 @@ class RieselPrime
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -125,8 +124,7 @@ class RieselPrime
      * @param integer $n
      * @return RieselPrime
      */
-    public function setN($n)
-    {
+    public function setN($n) {
         $this->n = $n;
 
         return $this;
@@ -137,8 +135,7 @@ class RieselPrime
      *
      * @return integer 
      */
-    public function getN()
-    {
+    public function getN() {
         return $this->n;
     }
 
@@ -148,8 +145,7 @@ class RieselPrime
      * @param integer $utm
      * @return RieselPrime
      */
-    public function setUtm($utm)
-    {
+    public function setUtm($utm) {
         $this->utm = $utm;
 
         return $this;
@@ -160,8 +156,7 @@ class RieselPrime
      *
      * @return integer 
      */
-    public function getUtm()
-    {
+    public function getUtm() {
         return $this->utm;
     }
 
@@ -171,8 +166,7 @@ class RieselPrime
      * @param boolean $isTwin
      * @return RieselPrime
      */
-    public function setIsTwin($isTwin)
-    {
+    public function setIsTwin($isTwin) {
         $this->isTwin = $isTwin;
 
         return $this;
@@ -183,8 +177,7 @@ class RieselPrime
      *
      * @return boolean 
      */
-    public function getIsTwin()
-    {
+    public function getIsTwin() {
         return $this->isTwin;
     }
 
@@ -194,8 +187,7 @@ class RieselPrime
      * @param boolean $isSG
      * @return RieselPrime
      */
-    public function setIsSG($isSG)
-    {
+    public function setIsSG($isSG) {
         $this->isSG = $isSG;
 
         return $this;
@@ -206,8 +198,7 @@ class RieselPrime
      *
      * @return boolean 
      */
-    public function getIsSG()
-    {
+    public function getIsSG() {
         return $this->isSG;
     }
 
@@ -217,8 +208,7 @@ class RieselPrime
      * @param boolean $is100th
      * @return RieselPrime
      */
-    public function setIs100th($is100th)
-    {
+    public function setIs100th($is100th) {
         $this->is100th = $is100th;
 
         return $this;
@@ -229,8 +219,7 @@ class RieselPrime
      *
      * @return boolean 
      */
-    public function getIs100th()
-    {
+    public function getIs100th() {
         return $this->is100th;
     }
 
@@ -240,8 +229,7 @@ class RieselPrime
      * @param boolean $isProvenPrime
      * @return RieselPrime
      */
-    public function setIsProvenPrime($isProvenPrime)
-    {
+    public function setIsProvenPrime($isProvenPrime) {
         $this->isProvenPrime = $isProvenPrime;
 
         return $this;
@@ -252,8 +240,7 @@ class RieselPrime
      *
      * @return boolean 
      */
-    public function getIsProvenPrime()
-    {
+    public function getIsProvenPrime() {
         return $this->isProvenPrime;
     }
 
@@ -263,8 +250,7 @@ class RieselPrime
      * @param \DateTime $foundOn
      * @return RieselPrime
      */
-    public function setFoundOn($foundOn)
-    {
+    public function setFoundOn($foundOn) {
         $this->foundOn = $foundOn;
 
         return $this;
@@ -275,8 +261,7 @@ class RieselPrime
      *
      * @return \DateTime 
      */
-    public function getFoundOn()
-    {
+    public function getFoundOn() {
         return $this->foundOn;
     }
     
@@ -309,8 +294,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\Program $testedPrime
      * @return RieselPrime
      */
-    public function setTestedPrime(\RPPDb\RieselBundle\Entity\Program $testedPrime = null)
-    {
+    public function setTestedPrime(\RPPDb\RieselBundle\Entity\Program $testedPrime = null) {
         $this->testedPrime = $testedPrime;
 
         return $this;
@@ -321,8 +305,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\Program 
      */
-    public function getTestedPrime()
-    {
+    public function getTestedPrime() {
         return $this->testedPrime;
     }
 
@@ -332,8 +315,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\Program $testedTwin
      * @return RieselPrime
      */
-    public function setTestedTwin(\RPPDb\RieselBundle\Entity\Program $testedTwin = null)
-    {
+    public function setTestedTwin(\RPPDb\RieselBundle\Entity\Program $testedTwin = null) {
         $this->testedTwin = $testedTwin;
 
         return $this;
@@ -344,8 +326,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\Program 
      */
-    public function getTestedTwin()
-    {
+    public function getTestedTwin() {
         return $this->testedTwin;
     }
 
@@ -355,8 +336,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\Contributor $foundBy
      * @return RieselPrime
      */
-    public function setFoundBy(\RPPDb\RieselBundle\Entity\Contributor $foundBy = null)
-    {
+    public function setFoundBy(\RPPDb\RieselBundle\Entity\Contributor $foundBy = null) {
         $this->foundBy = $foundBy;
 
         return $this;
@@ -367,8 +347,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\Contributor 
      */
-    public function getFoundBy()
-    {
+    public function getFoundBy() {
         return $this->foundBy;
     }
 
@@ -378,8 +357,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\RieselK $rieselK
      * @return RieselPrime
      */
-    public function setRieselK(\RPPDb\RieselBundle\Entity\RieselK $rieselK = null)
-    {
+    public function setRieselK(\RPPDb\RieselBundle\Entity\RieselK $rieselK = null) {
         $this->rieselK = $rieselK;
 
         return $this;
@@ -390,8 +368,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\RieselK 
      */
-    public function getRieselK()
-    {
+    public function getRieselK() {
         return $this->rieselK;
     }
 
@@ -401,8 +378,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\NearWoodall $nearWoodall
      * @return RieselPrime
      */
-    public function setNearWoodall(\RPPDb\RieselBundle\Entity\NearWoodall $nearWoodall = null)
-    {
+    public function setNearWoodall(\RPPDb\RieselBundle\Entity\NearWoodall $nearWoodall = null) {
         $this->nearWoodall = $nearWoodall;
 
         return $this;
@@ -413,8 +389,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\NearWoodall 
      */
-    public function getNearWoodall()
-    {
+    public function getNearWoodall() {
         return $this->nearWoodall;
     }
     
@@ -472,8 +447,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\Woodall $woodall
      * @return RieselPrime
      */
-    public function setWoodall(\RPPDb\RieselBundle\Entity\Woodall $woodall = null)
-    {
+    public function setWoodall(\RPPDb\RieselBundle\Entity\Woodall $woodall = null) {
         $this->woodall = $woodall;
 
         return $this;
@@ -484,8 +458,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\Woodall 
      */
-    public function getWoodall()
-    {
+    public function getWoodall() {
         return $this->woodall;
     }
 
@@ -495,8 +468,7 @@ class RieselPrime
      * @param \RPPDb\RieselBundle\Entity\Comment $comment
      * @return RieselPrime
      */
-    public function setComment(\RPPDb\RieselBundle\Entity\Comment $comment = null)
-    {
+    public function setComment(\RPPDb\RieselBundle\Entity\Comment $comment = null) {
         $this->comment = $comment;
 
         return $this;
@@ -507,8 +479,7 @@ class RieselPrime
      *
      * @return \RPPDb\RieselBundle\Entity\Comment 
      */
-    public function getComment()
-    {
+    public function getComment() {
         return $this->comment;
     }
     
@@ -518,8 +489,7 @@ class RieselPrime
      * @param string $comment
      * @return RieselPrime
      */
-    public function setCommentStr($comment = null)
-    {
+    public function setCommentStr($comment = null) {
         if ($comment) {
             if (is_null($this->comment)) {
                 $this->comment = new \RPPDb\RieselBundle\Entity\Comment();
@@ -536,8 +506,7 @@ class RieselPrime
      *
      * @return string
      */
-    public function getCommentStr()
-    {
+    public function getCommentStr() {
         return strval($this->comment ?: '');
     }
 }

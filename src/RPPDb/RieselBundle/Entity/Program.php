@@ -11,8 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RPPDb\RieselBundle\Entity\ProgramRepository")
  */
-class Program
-{
+class Program {
     /**
      * @var integer
      *
@@ -21,14 +20,14 @@ class Program
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="program", type="string", length=255)
      */
     private $program;
-
+    
     /**
      * @var string
      *
@@ -45,7 +44,7 @@ class Program
      * @ORM\OneToMany(targetEntity="RieselPrime", mappedBy="testedTwin")
      */
     protected $twins;
-
+    
     public function __construct() {
         $this->primes = new ArrayCollection();
         $this->twins = new ArrayCollection();
@@ -56,120 +55,109 @@ class Program
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-
+    
     /**
      * Set program
      *
      * @param string $program
      * @return Program
      */
-    public function setProgram($program)
-    {
+    public function setProgram($program) {
         $this->program = $program;
 
         return $this;
     }
-
+    
     /**
      * Get program
      *
      * @return string 
      */
-    public function getProgram()
-    {
+    public function getProgram() {
         return $this->program;
     }
-
+    
     /**
      * Set version
      *
      * @param string $version
      * @return Program
      */
-    public function setVersion($version)
-    {
+    public function setVersion($version) {
         $this->version = $version;
 
         return $this;
     }
-
+    
     /**
      * Get version
      *
      * @return string 
      */
-    public function getVersion()
-    {
+    public function getVersion() {
         return $this->version;
     }
-
+    
     /**
      * Add primes
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $primes
      * @return Program
      */
-    public function addPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime)
-    {
+    public function addPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime) {
         $this->primes[] = $prime;
 
         return $this;
     }
-
+    
     /**
      * Remove primes
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $primes
      */
-    public function removePrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime)
-    {
+    public function removePrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime) {
         $this->primes->removeElement($prime);
     }
-
+    
     /**
      * Get primes
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPrimes()
-    {
+    public function getPrimes() {
         return $this->primes;
     }
-
+    
     /**
      * Add twins
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $twins
      * @return Program
      */
-    public function addTwin(\RPPDb\RieselBundle\Entity\RieselPrime $twin)
-    {
+    public function addTwin(\RPPDb\RieselBundle\Entity\RieselPrime $twin) {
         $this->twins[] = $twin;
 
         return $this;
     }
-
+    
     /**
      * Remove twins
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $twins
      */
-    public function removeTwin(\RPPDb\RieselBundle\Entity\RieselPrime $twin)
-    {
+    public function removeTwin(\RPPDb\RieselBundle\Entity\RieselPrime $twin) {
         $this->twins->removeElement($twin);
     }
-
+    
     /**
      * Get twins
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTwins()
-    {
+    public function getTwins() {
         return $this->twins;
     }
     

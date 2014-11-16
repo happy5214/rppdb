@@ -19,14 +19,14 @@ class NearWoodall {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var integer
      *
      * @ORM\Column(name="n", type="integer")
      */
     private $n;
-
+    
     /**
      * @var string
      *
@@ -45,7 +45,7 @@ class NearWoodall {
      * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="nearWoodall")
      */
     private $prime;
-
+    
     /**
      * Get id
      *
@@ -54,7 +54,7 @@ class NearWoodall {
     public function getId() {
         return $this->id;
     }
-
+    
     /**
      * Set n
      *
@@ -66,7 +66,7 @@ class NearWoodall {
 
         return $this;
     }
-
+    
     /**
      * Get n
      *
@@ -75,7 +75,7 @@ class NearWoodall {
     public function getN() {
         return $this->n;
     }
-
+    
     /**
      * Set sign
      *
@@ -87,7 +87,7 @@ class NearWoodall {
 
         return $this;
     }
-
+    
     /**
      * Get sign
      *
@@ -96,27 +96,25 @@ class NearWoodall {
     public function getSign() {
         return $this->sign;
     }
-
+    
     /**
      * Set prime
      *
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $prime
      * @return NearWoodall
      */
-    public function setPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime = null)
-    {
+    public function setPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime = null) {
         $this->prime = $prime;
 
         return $this;
     }
-
+    
     /**
      * Get prime
      *
      * @return \RPPDb\RieselBundle\Entity\RieselPrime 
      */
-    public function getPrime()
-    {
+    public function getPrime() {
         return $this->prime;
     }
     
@@ -145,27 +143,25 @@ class NearWoodall {
             return "({$this->n}{$this->sign}1)&middot;2<sup>{$this->n}</sup>-1";
         }
     }
-
+    
     /**
      * Set digits
      *
      * @param integer $digits
      * @return NearWoodall
      */
-    public function setDigits($digits)
-    {
+    public function setDigits($digits) {
         $this->digits = $digits;
 
         return $this;
     }
-
+    
     /**
      * Get digits
      *
      * @return integer 
      */
-    public function getDigits()
-    {
+    public function getDigits() {
         return $this->digits;
     }
 }

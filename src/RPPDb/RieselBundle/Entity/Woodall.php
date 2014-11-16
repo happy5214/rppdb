@@ -45,8 +45,7 @@ class Woodall
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -56,8 +55,7 @@ class Woodall
      * @param integer $n
      * @return Woodall
      */
-    public function setN($n)
-    {
+    public function setN($n) {
         $this->n = $n;
 
         return $this;
@@ -68,8 +66,7 @@ class Woodall
      *
      * @return integer 
      */
-    public function getN()
-    {
+    public function getN() {
         return $this->n;
     }
 
@@ -79,8 +76,7 @@ class Woodall
      * @param integer $digits
      * @return Woodall
      */
-    public function setDigits($digits)
-    {
+    public function setDigits($digits) {
         $this->digits = $digits;
 
         return $this;
@@ -91,8 +87,7 @@ class Woodall
      *
      * @return integer 
      */
-    public function getDigits()
-    {
+    public function getDigits() {
         return $this->digits;
     }
     
@@ -120,8 +115,7 @@ class Woodall
      * @param \RPPDb\RieselBundle\Entity\RieselPrime $prime
      * @return Woodall
      */
-    public function setPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime = null)
-    {
+    public function setPrime(\RPPDb\RieselBundle\Entity\RieselPrime $prime = null) {
         $this->prime = $prime;
 
         return $this;
@@ -132,8 +126,7 @@ class Woodall
      *
      * @return \RPPDb\RieselBundle\Entity\RieselPrime 
      */
-    public function getPrime()
-    {
+    public function getPrime() {
         return $this->prime;
     }
 }

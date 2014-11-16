@@ -6,14 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RieselPrimeType extends AbstractType
-{
-        /**
+class RieselPrimeType extends AbstractType {
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('n', 'integer')
             ->add('utm', 'integer', array('required' => false))
@@ -42,18 +40,16 @@ class RieselPrimeType extends AbstractType
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'RPPDb\RieselBundle\Entity\RieselPrime'
         ));
     }
-
+    
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'rieselprime';
     }
 }
