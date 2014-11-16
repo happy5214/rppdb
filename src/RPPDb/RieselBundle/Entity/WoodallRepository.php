@@ -15,7 +15,9 @@ class WoodallRepository extends EntityRepository
     public function findPrimes() {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT w, p, k, c, nw FROM RPPDbRieselBundle:Woodall w JOIN w.prime p JOIN p.rieselK k LEFT JOIN p.foundBy c LEFT JOIN p.nearWoodall nw ORDER BY w.n ASC"
+                "SELECT w, p, k, fb, nw, c FROM RPPDbRieselBundle:Woodall w
+                 JOIN w.prime p JOIN p.rieselK k LEFT JOIN p.foundBy fb LEFT JOIN p.nearWoodall nw LEFT JOIN p.comment c
+                 ORDER BY w.n ASC"
             )->getResult();
     }
 }
