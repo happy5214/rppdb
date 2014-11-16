@@ -6,14 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class NearWoodallType extends AbstractType
-{
-        /**
+class NearWoodallType extends AbstractType {
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('primek', 'integer', array('label' => "k of normalized form", 'mapped' => false))
             ->add('primen', 'integer', array('label' => "n of normalized form", 'mapped' => false))
@@ -27,18 +25,16 @@ class NearWoodallType extends AbstractType
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'RPPDb\RieselBundle\Entity\NearWoodall'
         ));
     }
-
+    
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'nearwoodall';
     }
 }

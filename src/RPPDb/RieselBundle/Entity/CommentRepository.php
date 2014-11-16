@@ -4,6 +4,6 @@ namespace RPPDb\RieselBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class CommentRepository extends EntityRepository
-{
+class CommentRepository extends EntityRepository {
+    
 }

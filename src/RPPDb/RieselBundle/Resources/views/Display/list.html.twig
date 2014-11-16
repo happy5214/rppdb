@@ -22,9 +22,9 @@ Riesel list (<i>k</i>&middot;2<sup><i>n</i></sup>-1 prime) for {{ min }} &lt; k 
 </tr>
 </thead>
 <tbody>
-{% for rieselk in riesel_ks %}
+{% for k in ks %}
 {{ render_esi(controller('RPPDbRieselBundle:Display:kdetail', {
-        'k': rieselk.id
+        'k': k.id
     })) }}
 {% endfor %}
 </tbody>

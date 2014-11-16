@@ -1,11 +1,11 @@
-<tr class="{{ rieselk.reserved }}">
-<td class="{{ rieselk.kclass }}"><a href="{{ path('_riesel_display_k', {'k': rieselk.num}) }}">{{ rieselk.value|raw }}</a></td>
-<td>{{ rieselk.reservedBy|raw }}</td>
-<td>{{ rieselk.lastUpdate is empty ? "" : rieselk.lastUpdate|date("Y-m-d") }}</td>
+<tr class="{{ k.reserved }}">
+<td class="{{ k.kclass }}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}</a></td>
+<td>{{ k.reservedBy|raw }}</td>
+<td>{{ k.lastUpdate is empty ? "" : k.lastUpdate|date("Y-m-d") }}</td>
 {# <td>N/A</td> #}
-<td>{{ rieselk.primes|length }}</td>
-<td>{{ rieselk.nashWeight }}</td>
-<td>{{ rieselk.ranges|raw }}</td>
+<td>{{ k.primes|length }}</td>
+<td>{{ k.nashWeight }}</td>
+<td>{{ k.ranges|raw }}</td>
 {# <td>To be added.</td> #}
 <td>{{ primes|raw }}</td>
 </tr>

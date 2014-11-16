@@ -26,20 +26,20 @@ class EditController extends Controller {
      */
     public function kAction($k) {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
-        $rieselk = $em->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
+        $manager = $this->getDoctrine()->getManager();
         
-        $form = $this->createForm(new RieselKType(), $rieselk);
+        $rieselK = $manager->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
+        
+        $form = $this->createForm(new RieselKType(), $rieselK);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk->setLastEdit(new \DateTime());
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselk->getNum())));
+            $rieselK->setLastEdit(new \DateTime());
+            $manager->flush();
+            
+            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselK->getNum())));
         }
-        return array('k' => $rieselk->getNum(), 'form' => $form->createView());
+        return array('k' => $rieselK->getNum(), 'form' => $form->createView());
     }
     
     /**
@@ -49,19 +49,19 @@ class EditController extends Controller {
      */
     public function addKAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
-        $rieselk = new RieselK();
+        $manager = $this->getDoctrine()->getManager();
         
-        $form = $this->createForm(new RieselKType(), $rieselk);
+        $rieselK = new RieselK();
+        
+        $form = $this->createForm(new RieselKType(), $rieselK);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk->setLastEdit(new \DateTime());
-            $em->persist($rieselk);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselk->getNum())));
+            $rieselK->setLastEdit(new \DateTime());
+            $manager->persist($rieselK);
+            $manager->flush();
+            
+            return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselK->getNum())));
         }
         return array('form' => $form->createView());
     }
@@ -73,16 +73,16 @@ class EditController extends Controller {
      */
     public function programAction($id) {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
-        $program = $em->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
+        $manager = $this->getDoctrine()->getManager();
+        
+        $program = $manager->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
         
         $form = $this->createForm(new ProgramType(), $program);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $em->flush();
-
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_program', array('id' => $program->getId())));
         }
         return array('program' => $program, 'form' => $form->createView());
@@ -95,17 +95,17 @@ class EditController extends Controller {
      */
     public function addProgramAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
+        $manager = $this->getDoctrine()->getManager();
+        
         $program = new Program();
         
         $form = $this->createForm(new ProgramType(), $program);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $em->persist($program);
-            $em->flush();
-
+            $manager->persist($program);
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_program', array('id' => $program->getId())));
         }
         return array('form' => $form->createView());
@@ -118,16 +118,16 @@ class EditController extends Controller {
      */
     public function contributorAction($id) {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
-        $contributor = $em->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
+        $manager = $this->getDoctrine()->getManager();
+        
+        $contributor = $manager->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
         
         $form = $this->createForm(new ContributorType(), $contributor);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $em->flush();
-
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_contributor', array('id' => $contributor->getId())));
         }
         return array('contributor' => $contributor, 'form' => $form->createView());
@@ -140,17 +140,17 @@ class EditController extends Controller {
      */
     public function addContributorAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
+        $manager = $this->getDoctrine()->getManager();
+        
         $contributor = new Contributor();
         
         $form = $this->createForm(new ContributorType(), $contributor);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $em->persist($contributor);
-            $em->flush();
-
+            $manager->persist($contributor);
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_contributor', array('id' => $contributor->getId())));
         }
         return array('form' => $form->createView());
@@ -163,29 +163,29 @@ class EditController extends Controller {
      */
     public function nearWoodallAction($id) {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
+        $manager = $this->getDoctrine()->getManager();
         
-        $nearwoodall = $em->getRepository('RPPDbRieselBundle:NearWoodall')->findOneById($id);
+        $nearWoodall = $manager->getRepository('RPPDbRieselBundle:NearWoodall')->findOneById($id);
         
-        $form = $this->createForm(new NearWoodallType(), $nearwoodall);
-        $prime = $nearwoodall->getPrime();
+        $form = $this->createForm(new NearWoodallType(), $nearWoodall);
+        $prime = $nearWoodall->getPrime();
         $form->get('primek')->setData($prime->getRieselK()->getNum());
         $form->get('primen')->setData($prime->getN());
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk = $form->get('primek')->getData();
-            $rieseln = $form->get('primen')->getData();
-            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
-            if (is_null($rieselprime)) {
+            $rieselK = $form->get('primek')->getData();
+            $rieselN = $form->get('primen')->getData();
+            $newPrime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselK, $rieselN);
+            if (is_null($newPrime)) {
                 return array('form' => $form->createView());
             }
-            $nearwoodall->setPrime($rieselprime);
-            $em->flush();
+            $nearWoodall->setPrime($newPrime);
+            $manager->flush();
             
             return $this->redirect($this->generateUrl('_riesel_display_woodall'));
         }
-        return array('nearwoodall' => $nearwoodall, 'form' => $form->createView());
+        return array('nearwoodall' => $nearWoodall, 'form' => $form->createView());
     }
     
     /**
@@ -195,24 +195,24 @@ class EditController extends Controller {
      */
     public function addNearWoodallAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
-        $nearwoodall = new NearWoodall();
+        $manager = $this->getDoctrine()->getManager();
         
-        $form = $this->createForm(new NearWoodallType(), $nearwoodall);
+        $nearWoodall = new NearWoodall();
+        
+        $form = $this->createForm(new NearWoodallType(), $nearWoodall);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk = $form->get('primek')->getData();
-            $rieseln = $form->get('primen')->getData();
-            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
-            if (is_null($rieselprime)) {
+            $rieselK = $form->get('primek')->getData();
+            $rieselN = $form->get('primen')->getData();
+            $rieselPrime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselK, $rieselN);
+            if (is_null($rieselPrime)) {
                 return array('form' => $form->createView());
             }
-            $nearwoodall->setPrime($rieselprime);
-            $em->persist($nearwoodall);
-            $em->flush();
-
+            $nearWoodall->setPrime($rieselPrime);
+            $manager->persist($nearWoodall);
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_woodall'));
         }
         return array('form' => $form->createView());
@@ -225,9 +225,9 @@ class EditController extends Controller {
      */
     public function woodallAction($id) {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
+        $manager = $this->getDoctrine()->getManager();
         
-        $woodall = $em->getRepository('RPPDbRieselBundle:Woodall')->findOneById($id);
+        $woodall = $manager->getRepository('RPPDbRieselBundle:Woodall')->findOneById($id);
         
         $form = $this->createForm(new WoodallType(), $woodall);
         $prime = $woodall->getPrime();
@@ -236,14 +236,14 @@ class EditController extends Controller {
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk = $form->get('primek')->getData();
-            $rieseln = $form->get('primen')->getData();
-            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
-            if (is_null($rieselprime)) {
+            $rieselK = $form->get('primek')->getData();
+            $rieselN = $form->get('primen')->getData();
+            $newPrime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselK, $rieselN);
+            if (is_null($newPrime)) {
                 return array('form' => $form->createView());
             }
-            $woodall->setPrime($rieselprime);
-            $em->flush();
+            $woodall->setPrime($newPrime);
+            $manager->flush();
             
             return $this->redirect($this->generateUrl('_riesel_display_woodall'));
         }
@@ -257,24 +257,24 @@ class EditController extends Controller {
      */
     public function addWoodallAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
-     
+        $manager = $this->getDoctrine()->getManager();
+        
         $woodall = new Woodall();
         
         $form = $this->createForm(new WoodallType(), $woodall);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $rieselk = $form->get('primek')->getData();
-            $rieseln = $form->get('primen')->getData();
-            $rieselprime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselk, $rieseln);
-            if (is_null($rieselprime)) {
+            $rieselK = $form->get('primek')->getData();
+            $rieselN = $form->get('primen')->getData();
+            $rieselPrime = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime')->findByKNumAndN($rieselK, $rieselN);
+            if (is_null($rieselPrime)) {
                 return array('form' => $form->createView());
             }
-            $woodall->setPrime($rieselprime);
-            $em->persist($woodall);
-            $em->flush();
-
+            $woodall->setPrime($rieselPrime);
+            $manager->persist($woodall);
+            $manager->flush();
+            
             return $this->redirect($this->generateUrl('_riesel_display_woodall'));
         }
         return array('form' => $form->createView());

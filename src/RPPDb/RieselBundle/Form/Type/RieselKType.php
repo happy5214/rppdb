@@ -6,14 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RieselKType extends AbstractType
-{
-        /**
+class RieselKType extends AbstractType {
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('num', 'integer', array('label' => 'Actual number', 'required' => false))
             ->add('value', 'text', array('label' => 'Table cell contents'))
@@ -45,18 +43,16 @@ class RieselKType extends AbstractType
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'RPPDb\RieselBundle\Entity\RieselK'
         ));
     }
-
+    
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'rieselk';
     }
 }
