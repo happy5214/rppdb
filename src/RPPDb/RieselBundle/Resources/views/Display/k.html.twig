@@ -64,10 +64,10 @@
 <td colspan="2">Prime Pages</td>
 {% else %}
 <td>{{ prime.isProvenPrime ? "Yes" : "" }}</td>
-<td>{% if prime.testedPrime %}<a href="{{ path('_riesel_display_program', {'id': prime.testedPrime.id}) }}">{{ prime.testedPrime }}{% else %}N/A{% endif %}</td>
+<td>{% if prime.testedPrime %}<a href="{{ path('_riesel_display_program', {'id': prime.testedPrime.id}) }}">{{ prime.testedPrime }}</a>{% else %}N/A{% endif %}</td>
 {% endif %}
-<td>{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}{% else %}N/A{% endif %}{% endif %}</td>
-<td>{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}{% endif %}</td>
+<td>{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}</a>{% else %}N/A{% endif %}{% endif %}</td>
+<td>{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.foundOn is empty ? "" : prime.foundOnString }}</td>
 <td>{% if prime.nearWoodall %}{{ prime.nearWoodall.styledString|raw }}{% endif %}</td>
 </tr>
