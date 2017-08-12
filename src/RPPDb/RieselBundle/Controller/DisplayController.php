@@ -5,6 +5,7 @@ namespace RPPDb\RieselBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DisplayController extends Controller {
@@ -31,13 +32,13 @@ class DisplayController extends Controller {
         return array('k' => $rieselK, 'previous' => $previous, 'next' => $next);
     }
     
-    public function kdetailAction($k) {
+    public function kdetailAction(Request $request, $k) {
         $rieselK = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
         $response = new Response();
         $response->setLastModified($rieselK->getLastEdit());
         $response->setPublic();
         
-        if ($response->isNotModified($this->getRequest())) {
+        if ($response->isNotModified($request)) {
             // return the 304 Response immediately
             return $response;
         } else {

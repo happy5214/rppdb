@@ -2,9 +2,11 @@
 
 namespace RPPDb\RieselBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use RPPDb\RieselBundle\Entity\RieselK;
@@ -24,8 +26,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function kAction($k) {
-        $request = $this->getRequest();
+    public function kAction(Request $request, $k) {
         $manager = $this->getDoctrine()->getManager();
         
         $rieselK = $manager->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
@@ -47,8 +48,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function addKAction() {
-        $request = $this->getRequest();
+    public function addKAction(Request $request) {
         $manager = $this->getDoctrine()->getManager();
         
         $rieselK = new RieselK();
@@ -71,8 +71,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function programAction($id) {
-        $request = $this->getRequest();
+    public function programAction(Request $request, $id) {
         $manager = $this->getDoctrine()->getManager();
         
         $program = $manager->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
@@ -93,8 +92,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function addProgramAction() {
-        $request = $this->getRequest();
+    public function addProgramAction(Request $request) {
         $manager = $this->getDoctrine()->getManager();
         
         $program = new Program();
@@ -116,8 +114,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function contributorAction($id) {
-        $request = $this->getRequest();
+    public function contributorAction(Request $request, $id) {
         $manager = $this->getDoctrine()->getManager();
         
         $contributor = $manager->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
@@ -138,8 +135,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function addContributorAction() {
-        $request = $this->getRequest();
+    public function addContributorAction(Request $request) {
         $manager = $this->getDoctrine()->getManager();
         
         $contributor = new Contributor();
@@ -161,8 +157,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function nearWoodallAction($id) {
-        $request = $this->getRequest();
+    public function nearWoodallAction(Request $request, $id) {
         $manager = $this->getDoctrine()->getManager();
         
         $nearWoodall = $manager->getRepository('RPPDbRieselBundle:NearWoodall')->findOneById($id);
@@ -193,8 +188,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function addNearWoodallAction() {
-        $request = $this->getRequest();
+    public function addNearWoodallAction(Request $request) {
         $manager = $this->getDoctrine()->getManager();
         
         $nearWoodall = new NearWoodall();
@@ -223,8 +217,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function woodallAction($id) {
-        $request = $this->getRequest();
+    public function woodallAction(Request $request, $id) {
         $manager = $this->getDoctrine()->getManager();
         
         $woodall = $manager->getRepository('RPPDbRieselBundle:Woodall')->findOneById($id);
@@ -255,8 +248,7 @@ class EditController extends Controller {
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
-    public function addWoodallAction() {
-        $request = $this->getRequest();
+    public function addWoodallAction(Request $request) {
         $manager = $this->getDoctrine()->getManager();
         
         $woodall = new Woodall();
