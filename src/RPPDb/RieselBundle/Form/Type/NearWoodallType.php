@@ -4,7 +4,11 @@ namespace RPPDb\RieselBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class NearWoodallType extends AbstractType {
     /**
@@ -13,28 +17,21 @@ class NearWoodallType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('primek', 'integer', array('label' => "k of normalized form", 'mapped' => false))
-            ->add('primen', 'integer', array('label' => "n of normalized form", 'mapped' => false))
-            ->add('n', 'integer', array('label' => "n"))
-            ->add('digits', 'integer', array('label' => "number of digits"))
-            ->add('sign', 'choice', array('label' => "Sign (use '/' for 2^2-1)", 'choices' => array('-' => '-', '+' => '+', '/' => '/')))
-            ->add('save', 'submit')
+            ->add('primek', IntegerType::class, array('label' => "k of normalized form", 'mapped' => false))
+            ->add('primen', IntegerType::class, array('label' => "n of normalized form", 'mapped' => false))
+            ->add('n', IntegerType::class, array('label' => "n"))
+            ->add('digits', IntegerType::class, array('label' => "number of digits"))
+            ->add('sign', ChoiceType::class, array('label' => "Sign (use '/' for 2^2-1)", 'choices' => array('-' => '-', '+' => '+', '/' => '/'), 'choices_as_values' => true))
+            ->add('save', SubmitType::class)
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'RPPDb\RieselBundle\Entity\NearWoodall'
         ));
-    }
-    
-    /**
-     * @return string
-     */
-    public function getName() {
-        return 'nearwoodall';
     }
 }

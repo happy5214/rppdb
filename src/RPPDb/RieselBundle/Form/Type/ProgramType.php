@@ -4,7 +4,10 @@ namespace RPPDb\RieselBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProgramType extends AbstractType {
     /**
@@ -13,25 +16,18 @@ class ProgramType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('program', 'text', array('label' => 'Program name'))
-            ->add('version', 'text', array('label' => 'Program version'))
-            ->add('save', 'submit')
+            ->add('program', TextType::class, array('label' => 'Program name'))
+            ->add('version', TextType::class, array('label' => 'Program version'))
+            ->add('save', SubmitType::class)
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'RPPDb\RieselBundle\Entity\Program'
         ));
-    }
-    
-    /**
-     * @return string
-     */
-    public function getName() {
-        return 'program';
     }
 }

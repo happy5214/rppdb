@@ -31,7 +31,7 @@ class EditController extends Controller {
         
         $rieselK = $manager->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
         
-        $form = $this->createForm(new RieselKType(), $rieselK);
+        $form = $this->createForm(RieselKType::class, $rieselK);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -53,7 +53,7 @@ class EditController extends Controller {
         
         $rieselK = new RieselK();
         
-        $form = $this->createForm(new RieselKType(), $rieselK);
+        $form = $this->createForm(RieselKType::class, $rieselK);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -76,7 +76,7 @@ class EditController extends Controller {
         
         $program = $manager->getRepository('RPPDbRieselBundle:Program')->findOneById($id);
         
-        $form = $this->createForm(new ProgramType(), $program);
+        $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -97,7 +97,7 @@ class EditController extends Controller {
         
         $program = new Program();
         
-        $form = $this->createForm(new ProgramType(), $program);
+        $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -119,7 +119,7 @@ class EditController extends Controller {
         
         $contributor = $manager->getRepository('RPPDbRieselBundle:Contributor')->findOneById($id);
         
-        $form = $this->createForm(new ContributorType(), $contributor);
+        $form = $this->createForm(ContributorType::class, $contributor);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -140,7 +140,7 @@ class EditController extends Controller {
         
         $contributor = new Contributor();
         
-        $form = $this->createForm(new ContributorType(), $contributor);
+        $form = $this->createForm(ContributorType::class, $contributor);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -162,7 +162,7 @@ class EditController extends Controller {
         
         $nearWoodall = $manager->getRepository('RPPDbRieselBundle:NearWoodall')->findOneById($id);
         
-        $form = $this->createForm(new NearWoodallType(), $nearWoodall);
+        $form = $this->createForm(NearWoodallType::class, $nearWoodall);
         $prime = $nearWoodall->getPrime();
         $form->get('primek')->setData($prime->getRieselK()->getNum());
         $form->get('primen')->setData($prime->getN());
@@ -193,7 +193,7 @@ class EditController extends Controller {
         
         $nearWoodall = new NearWoodall();
         
-        $form = $this->createForm(new NearWoodallType(), $nearWoodall);
+        $form = $this->createForm(NearWoodallType::class, $nearWoodall);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
@@ -222,7 +222,7 @@ class EditController extends Controller {
         
         $woodall = $manager->getRepository('RPPDbRieselBundle:Woodall')->findOneById($id);
         
-        $form = $this->createForm(new WoodallType(), $woodall);
+        $form = $this->createForm(WoodallType::class, $woodall);
         $prime = $woodall->getPrime();
         $form->get('primek')->setData($prime->getRieselK()->getNum());
         $form->get('primen')->setData($prime->getN());
@@ -253,7 +253,7 @@ class EditController extends Controller {
         
         $woodall = new Woodall();
         
-        $form = $this->createForm(new WoodallType(), $woodall);
+        $form = $this->createForm(WoodallType::class, $woodall);
         $form->handleRequest($request);
         
         if ($form->isValid()) {
