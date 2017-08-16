@@ -45,25 +45,29 @@ class DisplayController extends Controller {
             $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
             $renderedPrimes = '';
             if ($rieselK->getMaxTested()) {
-                $below = $repo->findByKBelow($rieselK, $rieselK->getMaxTested());
-                $above = $repo->findByKAbove($rieselK, $rieselK->getMaxTested());
-                $before = array();
-                $after = array();
-                foreach ($below as $prime) {
+                $before = $repo->findByKBelow($rieselK, $rieselK->getMaxTested());
+                $after = $repo->findByKAbove($rieselK, $rieselK->getMaxTested());
+                $separator = true;
+                /*$below = array();
+                $above = array();
+                foreach ($before as $prime) {
                     $before[] = $prime->render();
                 }
-                foreach ($above as $prime) {
+                foreach ($after as $prime) {
                     $after[] = $prime->render();
                 }
-                $renderedPrimes = implode(', ', $before) . " (...) " . implode(', ', $after);
+                $renderedPrimes = implode(', ', $below) . " (...) " . implode(', ', $above);*/
             } else {
-                $primes = array();
+                /*$primes = array();
                 foreach ($rieselK->getPrimes() as $prime) {
                     $primes[] = $prime->render();
                 }
-                $renderedPrimes = implode(', ', $primes);
+                $renderedPrimes = implode(', ', $primes);*/
+                $before = $rieselK->getPrimes();
+                $after = array();
+                $separator = false;
             }
-            return $this->render('RPPDbRieselBundle:Display:kdetail.html.twig', array('k' => $rieselK, 'primes' => $renderedPrimes), $response);
+            return $this->render('RPPDbRieselBundle:Display:kdetail.html.twig', array('k' => $rieselK, 'before' => $before, 'after' => $after, 'separator' => $separator), $response);
         }
     }
     

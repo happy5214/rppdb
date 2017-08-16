@@ -132,6 +132,15 @@ class NearWoodall {
     }
     
     /**
+     * Get string (prime list comment) rendering
+     * 
+     * @return string
+     */
+    public function commentString() {
+        return "Near Woodall: " . strval($this);
+    }
+    
+    /**
      * Get string (styled) rendering
      * 
      * @return string

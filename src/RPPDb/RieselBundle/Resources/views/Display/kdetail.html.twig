@@ -5,5 +5,17 @@
 <td>{{ k.primes|length }}</td>
 <td>{{ k.nashWeight }}</td>
 <td>{{ k.ranges|raw }}</td>
-<td>{% if k.coveringSet %}Covering set = {{ k.coveringSet }}{% else %}{{ primes|raw }}{% endif %}</td>
+<td>
+{%- if k.coveringSet -%}
+Covering set = {{ k.coveringSet }}
+{%- else -%}
+{% for prime in before %}
+{{ include('RPPDbRieselBundle::Display/prime.html.twig', {'prime': prime}) }}{% if not loop.last %}, {% endif %}
+{% endfor %}
+{% if separator %} (...) {% endif %}
+{% for prime in after %}
+{{ include('RPPDbRieselBundle::Display/prime.html.twig', {'prime': prime}) }}{% if not loop.last %}, {% endif %}
+{% endfor %}
+{%- endif -%}
+</td>
 </tr>

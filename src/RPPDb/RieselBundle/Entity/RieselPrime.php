@@ -509,4 +509,20 @@ class RieselPrime
     public function getCommentStr() {
         return strval($this->comment ?: '');
     }
+    
+    /**
+     * Get comments
+     *
+     * @return array
+     */
+    public function getComments() {
+        $comments = array();
+        if (!is_null($this->nearWoodall)) {
+            $comments[] = $this->nearWoodall->commentString();
+        }
+        if (!is_null($this->comment)) {
+            $comments[] = $this->comment;
+        }
+        return $comments;
+    }
 }
