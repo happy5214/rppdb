@@ -10,12 +10,9 @@
   .k28 {background-color:#00ff00;} /* 2805k candidate */
   .prm {background-color:#ffff00;} /* primorial-k candidate */
   .don {background-color:#00cc00;} /* done = green */
-  .cmt {color:#ff0000; cursor:pointer}  /* comment */
-  .wod {background-color:#777777; color:#d3d5ae; text-decoration:none; font-weight:bold;} /* Woodall-Prime */
   .p100 {border-color:#000000; border-width:1px; border-style:solid;} /* 100th prime */
   .tt  {background-color:#bbbb99; font-weight:bold;} /* table heads */
   .ttt {background-color:#bbbb99;} /* grey backgound */
-  .twi {background-color:#ff9900;} /* twin prime */
   .prj {background-color:#aaaad8;} /* reserved by project */
   .lnt  {text-decoration:line-through;} /*  line trough */
 

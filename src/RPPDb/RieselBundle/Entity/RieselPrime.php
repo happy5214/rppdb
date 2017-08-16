@@ -268,22 +268,22 @@ class RieselPrime
     public function render() {
         $string = strval($this->n);
         if ($this->utm) {
-            $string = "<a href=\"javascript:utm({$this->utm})\">$string</a>";
+            $string = "<a href='javascript:utm({$this->utm})'>$string</a>";
         }
         if ($this->isSG) {
-            $string = "<b>$string</b>";
+            $string = "<span class='sophie-germain'>$string</span>";
         }
         if ($this->isTwin) {
-            $string = "<span class=\"twi\">$string</span>";
+            $string = "<span class='twin'>$string</span>";
         }
         if ($this->woodall) {
-            $string = "<span class=\"wod\" title=\"Woodall: {$this->woodall}\">$string</span>";
+            $string = "<span class='woodall' title='Woodall: {$this->woodall}'>$string</span>";
         }
         if ($this->nearWoodall) {
-            $string = "$string<a class=\"cmt\" title=\"Near Woodall: {$this->nearWoodall}\">*</a>";
+            $string = "$string<a class='comment' title='Near Woodall: {$this->nearWoodall}'>*</a>";
         }
         if ($this->comment) {
-            $string = "$string<a class=\"cmt\" title=\"{$this->comment}\">*</a>";
+            $string = "$string<a class='comment' title='{$this->comment}'>*</a>";
         }
         return $string;
     }
