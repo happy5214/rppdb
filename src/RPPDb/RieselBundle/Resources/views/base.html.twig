@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{% block title %}Riesel and Proth Prime Database{% endblock %}</title>
+{% extends "RPPDbMainBundle::base.html.twig" %}
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{{ asset('bundles/rppdbmain/css/rps.css') }}">
+{{ parent() }}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/rppdbriesel/css/riesel.css') }}">
 {% endblock %}
-<link rel="shortcut icon" href="{{ asset('bundles/rppdbmain/images/favicon.ico') }}">
-<meta charset="UTF-8">
-{% block scripts %}
-<script type="text/javascript" src="{{ asset('bundles/rppdbmain/js/rps.js') }}"></script>
-{% endblock %}
-</head>
-<body>
-<h1>{% block header %}RPPDb{% endblock header %}</h1>
-{% block content %}Blah.{% endblock content %}
-</body>
-</html>
