@@ -52,12 +52,11 @@ class RieselPrimeRepository extends EntityRepository {
             )->getResult();
     }
     
-    public function findTwinByN($n) {
+    public function findFirstTwinKLessThanN($max) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT k.num FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselK k WHERE p.n = :n AND p.isTwin = true ORDER BY k.num ASC'
-           )->setParameters(array('n' => $n))
-            ->setMaxResults(1)
+                'SELECT p.n, MIN(k.num) AS min_k FROM RPPDbRieselBundle:RieselPrime p INDEX BY p.n JOIN p.rieselK k WHERE p.n < :max AND p.isTwin = true GROUP BY p.n ORDER BY p.n ASC'
+           )->setParameters(array('max' => $max))
             ->getResult();
     }
 }

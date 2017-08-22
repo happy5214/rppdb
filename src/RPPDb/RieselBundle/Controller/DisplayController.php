@@ -103,31 +103,27 @@ class DisplayController extends Controller {
      */
     public function firstTwinAction() {
         $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
-        $ks = array();
+        $tens = 8;
+        $flat_ks = array(0 => '-');
         $jumpingKs = array();
         $jumping = 0;
-        $ks[0] = array(0 => "-");
-        for ($j = 1; $j <= 9; $j++) {
-            $result = $repo->findTwinByN($j);
-            $num = $result[0]["num"];
-            $ks[0][] = $num;
+        $result = $repo->findFirstTwinKLessThanN($tens * 10);
+        foreach ($result as $resultN => $resultData) {
+            $num = $resultData['min_k'];
+            $flat_ks[$resultN] = $num;
             if ($num > $jumping) {
                 $jumping = $num;
-                $jumpingKs[$j] = true;
+                $jumpingKs[$resultN] = true;
             }
         }
-        for ($i = 1; $i <= 7; $i ++) {
-            $ks[$i] = array();
-            for ($j = 0; $j <= 9; $j++) {
-                $result = $repo->findTwinByN($i * 10 + $j);
-                $num = $result[0]["num"];
-                $ks[$i][] = $num;
-                if ($num > $jumping) {
-                    $jumping = $num;
-                    $jumpingKs[$i * 10 + $j] = true;
-                }
+        $table_ks = array();
+        for ($row = 0; $row < $tens; $row++) {
+            $table_ks[$row] = array();
+            for ($col = 0; $col < 10; $col++) {
+                $table_ks[$row][$col] = isset($flat_ks[$row * 10 + $col]) ? $flat_ks[$row * 10 + $col] : 'N/A';
             }
         }
-        return array('ks' => $ks, 'jumpingKs' => $jumpingKs);
+
+        return array('ks' => $table_ks, 'jumpingKs' => $jumpingKs);
     }
 }

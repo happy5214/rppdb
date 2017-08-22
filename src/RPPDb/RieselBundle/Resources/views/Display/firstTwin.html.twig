@@ -13,7 +13,7 @@ First odd <i>k</i> for which <i>k</i> &middot; 2<sup><i>n</i></sup>-1 and <i>k</
 <table class="table1">
 <tr><th><i>n</i></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr>
 {% for row in ks %}
-<tr><th scope="row">{{ loop.index0 }}</th>
+<tr><th scope="row">{{ loop.index0 * 10 }}</th>
 {% for twin in row %}
 <td{% if jumpingKs[loop.parent.loop.index0 * 10 + loop.index0] is defined %} class="res"{% endif %}>{{ twin }}</td>
 {% endfor %}

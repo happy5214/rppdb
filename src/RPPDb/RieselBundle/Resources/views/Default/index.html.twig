@@ -11,6 +11,7 @@ Riesel Primes (<i>k</i>&middot;2<sup><i>n</i></sup>-1 prime)
 {% block content %}
 This site is under construction.
 <h2>View tools</h2>
+<h3>Full prime lists</h3>
 <ul>
 <li><a href="{{ path('_riesel_display_list', {'min': 1, 'max': 50}) }}">1–50</a></li>
 <li><a href="{{ path('_riesel_display_list', {'min': 1, 'max': 300}) }}">1–300</a></li>
@@ -22,6 +23,9 @@ This site is under construction.
 <li><a href="{{ path('_riesel_display_list', {'min': 10001, 'max': 100000}) }}">10001–100000</a></li>
 <li><a href="{{ path('_riesel_display_list', {'min': 100001, 'max': 1000000}) }}">100001–1000000</a></li>
 <li><a href="{{ path('_riesel_display_list', {'min': 1000001, 'max': 100000000}) }}">1000001–100000000</a></li>
+</ul>
+<h3>Special prime lists</h3>
+<ul>
 <li><a href="{{ path('_riesel_display_woodall') }}">Woodall and near Woodall primes</a></li>
 <li><a href="{{ path('_riesel_display_firsttwin') }}">First Twin <i>k</i></a></li>
 </ul>
