@@ -1,9 +1,9 @@
-<tr class="{{ k.reserved }}">
+<tr class="{{ k.kclass == 'don' ? 'don' : k.reserved }}">
 <td class="{{ k.kclass }}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}{% if k.is15k %}<br>({{ k.is15k }}){% endif %}{% if k.is2145k %}<br>({{ k.is2145k }}){% endif %}{% if k.is2805k %}<br>({{ k.is2805k }}){% endif %}</a></td>
 <td>{{ k.reservedBy|raw }}</td>
 <td>{{ k.lastUpdate is empty ? "" : k.lastUpdate|date("Y-m-d") }}</td>
 <td>{{ k.primes|length }}</td>
 <td>{{ k.nashWeight }}</td>
 <td>{{ k.ranges|raw }}</td>
-<td>{{ primes|raw }}</td>
+<td>{% if k.coveringSet %}Covering set = {{ k.coveringSet }}{% else %}{{ primes|raw }}{% endif %}</td>
 </tr>
