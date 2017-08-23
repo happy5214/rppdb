@@ -51,30 +51,30 @@ class RieselK
     private $is3k;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="is15k", type="boolean")
+     * @ORM\Column(name="is15k", type="integer")
      */
     private $is15k;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="is2145k", type="boolean")
+     * @ORM\Column(name="is2145k", type="integer")
      */
     private $is2145k;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="is2805k", type="boolean")
+     * @ORM\Column(name="is2805k", type="integer")
      */
     private $is2805k;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="is_primorial", type="boolean")
+     * @ORM\Column(name="is_primorial", type="integer")
      */
     private $isPrimorial;
 
@@ -229,7 +229,7 @@ class RieselK
     /**
      * Set is15k
      *
-     * @param boolean $is15k
+     * @param integer $is15k
      * @return RieselK
      */
     public function setIs15k($is15k) {
@@ -240,7 +240,7 @@ class RieselK
     /**
      * Get is15k
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIs15k() {
         return $this->is15k;
@@ -249,7 +249,7 @@ class RieselK
     /**
      * Set is2145k
      *
-     * @param boolean $is2145k
+     * @param integer $is2145k
      * @return RieselK
      */
     public function setIs2145k($is2145k) {
@@ -260,7 +260,7 @@ class RieselK
     /**
      * Get is2145k
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIs2145k() {
         return $this->is2145k;
@@ -269,7 +269,7 @@ class RieselK
     /**
      * Set is2805k
      *
-     * @param boolean $is2805k
+     * @param integer $is2805k
      * @return RieselK
      */
     public function setIs2805k($is2805k) {
@@ -280,7 +280,7 @@ class RieselK
     /**
      * Get is2805k
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIs2805k() {
         return $this->is2805k;
@@ -289,7 +289,7 @@ class RieselK
     /**
      * Set isPrimorial
      *
-     * @param boolean $isPrimorial
+     * @param integer $isPrimorial
      * @return RieselK
      */
     public function setIsPrimorial($isPrimorial) {
@@ -300,7 +300,7 @@ class RieselK
     /**
      * Get isPrimorial
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIsPrimorial() {
         return $this->isPrimorial;
