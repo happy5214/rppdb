@@ -1,4 +1,5 @@
 {% extends "RPPDbRieselBundle::base.html.twig" %}
+{% import "RPPDbRieselBundle::fancy.html.twig" as fancyMacros %}
 
 {% block title %}
 Woodall and Near Woodall primes
@@ -28,7 +29,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ prime.prime.styledString|raw }}</td>
+<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
@@ -64,7 +65,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ prime.prime.styledString|raw }}</td>
+<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
@@ -100,7 +101,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ prime.prime.styledString|raw }}</td>
+<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
