@@ -14,7 +14,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByKBelow($k, $limit) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n < :limit AND p.rieselK = :k ORDER BY p.n ASC'
+                'SELECT p, w, nw, c FROM RPPDbRieselBundle:RieselPrime p LEFT JOIN p.woodall w LEFT JOIN p.nearWoodall nw LEFT JOIN p.comment c WHERE p.n < :limit AND p.rieselK = :k ORDER BY p.n ASC'
             )->setParameters(array('k' => $k, 'limit' => $limit))
             ->getResult();
     }
@@ -22,7 +22,7 @@ class RieselPrimeRepository extends EntityRepository {
     public function findByKAbove($k, $limit) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.n > :limit AND p.rieselK = :k ORDER BY p.n ASC'
+                'SELECT p, w, nw, c FROM RPPDbRieselBundle:RieselPrime p LEFT JOIN p.woodall w LEFT JOIN p.nearWoodall nw LEFT JOIN p.comment c WHERE p.n > :limit AND p.rieselK = :k ORDER BY p.n ASC'
             )->setParameters(array('k' => $k, 'limit' => $limit))
             ->getResult();
     }
@@ -32,7 +32,6 @@ class RieselPrimeRepository extends EntityRepository {
             ->createQuery(
                 'SELECT p FROM RPPDbRieselBundle:RieselPrime p WHERE p.rieselK = :k AND p.n = :n'
             )->setParameters(array('k' => $rieselk, 'n' => $n))
-            ->setMaxResults(1)
             ->getOneOrNullResult();
     }
     
@@ -41,7 +40,6 @@ class RieselPrimeRepository extends EntityRepository {
             ->createQuery(
                 'SELECT p FROM RPPDbRieselBundle:RieselPrime p JOIN p.rieselK k WHERE k.num = :k AND p.n = :n'
             )->setParameters(array('k' => $k, 'n' => $n))
-            ->setMaxResults(1)
             ->getOneOrNullResult();
     }
     
