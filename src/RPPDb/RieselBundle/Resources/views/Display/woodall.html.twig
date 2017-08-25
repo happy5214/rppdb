@@ -29,7 +29,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
+<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
@@ -56,7 +56,7 @@ Woodall and Near Woodall primes
 <th scope="row">1</th>
 <td>1</td>
 <td>1</td>
-<td>2<sup>2</sup>-1</td>
+<td><a href="{{ path('_riesel_display_k', {'k': 1}) }}">2<sup>2</sup>-1</a></td>
 <td><a href="{{ path('_riesel_display_contributor', {'id': 7}) }}">Unknown</a></td>
 <td></td>
 </tr>
@@ -65,7 +65,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
+<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
@@ -92,7 +92,7 @@ Woodall and Near Woodall primes
 <th scope="row">1</th>
 <td>2</td>
 <td>1</td>
-<td>2<sup>2</sup>-1</td>
+<td><a href="{{ path('_riesel_display_k', {'k': 1}) }}">2<sup>2</sup>-1</a></td>
 <td><a href="{{ path('_riesel_display_contributor', {'id': 7}) }}">Unknown</a></td>
 <td></td>
 </tr>
@@ -101,7 +101,7 @@ Woodall and Near Woodall primes
 <th scope="row">{{ loop.index + 1 }}</th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
-<td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
+<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
 <td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
 <td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
