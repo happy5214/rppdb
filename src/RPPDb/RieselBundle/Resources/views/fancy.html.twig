@@ -1,0 +1,23 @@
+{%- macro primeDisplay(prime) -%}
+{%- if prime.rieselK.num != 1 -%}
+{{ prime.rieselK.num }}&middot;
+{%- endif -%}
+2<sup>{{ prime.n }}</sup>-1
+{%- endmacro -%}
+
+{%- macro woodallDisplay(woodall) -%}
+{{ woodall.n }}&middot;2<sup>{{ woodall.n }}</sup>-1
+{%- endmacro -%}
+
+{%- macro nearWoodallDisplay2(n, sign) -%}
+({{ n }}{{ sign }}1)&middot;2<sup>{{ n }}</sup>-1
+{%- endmacro -%}
+
+{% macro nearWoodallDisplay(nearWoodall) %}
+{% import _self as macros %}
+{% if nearWoodall.sign == '/' %}
+{{ macros.nearWoodallDisplay2(1, '+') }}; also {{ macros.nearWoodallDisplay2(2, '-') }}
+{% else %}
+{{ macros.nearWoodallDisplay2(nearWoodall.n, nearWoodall.sign) }}
+{% endif %}
+{% endmacro %}
