@@ -22,36 +22,32 @@ class RieselKRepository extends EntityRepository {
     public function findFirstK() {
         return $this->getEntityManager()
                     ->createQuery(
-                        'SELECT k FROM RPPDbRieselBundle:RieselK k ORDER BY k.num ASC'
-                   )->setMaxResults(1)
-                    ->getSingleResult();
+                        'SELECT MIN(k.num) AS min_k FROM RPPDbRieselBundle:RieselK k'
+                   )->getSingleScalarResult();
     }
     
     public function findLastK() {
         return $this->getEntityManager()
                     ->createQuery(
-                        'SELECT k FROM RPPDbRieselBundle:RieselK k ORDER BY k.num DESC'
-                   )->setMaxResults(1)
-                    ->getSingleResult();
+                        'SELECT MAX(k.num) AS max_k FROM RPPDbRieselBundle:RieselK k'
+                   )->getSingleScalarResult();
     }
     
     public function findNextK($k) {
         $next = $this->getEntityManager()
                      ->createQuery(
-                         'SELECT k FROM RPPDbRieselBundle:RieselK k WHERE k.num > :num ORDER BY k.num ASC'
+                         'SELECT MIN(k.num) AS next_k FROM RPPDbRieselBundle:RieselK k WHERE k.num > :num'
                     )->setParameters(array('num' => $k))
-                     ->setMaxResults(1)
-                     ->getOneOrNullResult();
+                     ->getSingleScalarResult();
         return is_null($next) ? $this->findFirstK() : $next;
     }
     
     public function findPreviousK($k) {
         $previous = $this->getEntityManager()
                          ->createQuery(
-                             'SELECT k FROM RPPDbRieselBundle:RieselK k WHERE k.num < :num ORDER BY k.num DESC'
+                             'SELECT MAX(k.num) AS previous_k FROM RPPDbRieselBundle:RieselK k WHERE k.num < :num'
                         )->setParameters(array('num' => $k))
-                         ->setMaxResults(1)
-                         ->getOneOrNullResult();
+                         ->getSingleScalarResult();
         return is_null($previous) ? $this->findLastK() : $previous;
     }
 }
