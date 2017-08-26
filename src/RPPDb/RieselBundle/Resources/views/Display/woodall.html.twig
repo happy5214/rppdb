@@ -26,7 +26,7 @@ Woodall and Near Woodall primes
 <tbody>
 {% for prime in woodall %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_woodall', {'id': prime.id}) }}">{{ loop.index }}</a></th>
+<th scope="row"><a href="{{ path('_riesel_edit_woodall', {'id': prime.id}) }}" title="Edit this Woodall prime">{{ loop.index }}</a></th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
 <td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
@@ -53,7 +53,7 @@ Woodall and Near Woodall primes
 </thead>
 <tbody>
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': 1}) }}">1</a></th>
+<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': 1}) }}" title="Edit this near Woodall prime">1</a></th>
 <td>1</td>
 <td>1</td>
 <td>2<sup>2</sup>-1</td>
@@ -62,7 +62,7 @@ Woodall and Near Woodall primes
 </tr>
 {% for prime in plus %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}">{{ loop.index + 1 }}</a></th>
+<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
 <td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
@@ -89,7 +89,7 @@ Woodall and Near Woodall primes
 </thead>
 <tbody>
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': 1}) }}">1</a></th>
+<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': 1}) }}" title="Edit this near Woodall prime">1</a></th>
 <td>2</td>
 <td>1</td>
 <td>2<sup>2</sup>-1</td>
@@ -98,7 +98,7 @@ Woodall and Near Woodall primes
 </tr>
 {% for prime in minus %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}">{{ loop.index + 1 }}</a></th>
+<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
 <td>{{ prime.n }}</td>
 <td>{{ prime.digits }}</td>
 <td>{{ fancyMacros.primeDisplay(prime.prime) }}</td>
