@@ -4,7 +4,8 @@
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": { "": "src/" },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "require": {
         "symfony/symfony": "~2.8",
@@ -14,7 +15,7 @@
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~3.0",
         "symfony/monolog-bundle": "~3.1",
-        "sensio/distribution-bundle": "~4.0",
+        "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
