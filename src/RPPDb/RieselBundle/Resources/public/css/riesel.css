@@ -21,3 +21,34 @@
 .jumping {
 	background-color: #ffff99;
 }
+
+table.prime-list {
+	border-color:#000000;
+	border-style:solid;
+	border-width:2px;
+	border-collapse: collapse;
+}
+
+table.prime-list td {
+	border-color:#000000;
+	border-style:solid;
+	border-width:1px;
+	padding:1px 5px 1px 5px;
+}
+
+table.prime-list thead th {
+	background-color:#bbbb99;
+	border-color:#000000;
+	border-style:solid;
+	border-width:1px;
+	padding:1px 1px 1px 1px;
+}
+
+table.prime-list th[scope=row] {
+	border-color:#000000;
+	border-style:solid;
+	border-width:1px;
+	font-weight: inherit;
+	text-align: inherit;
+	padding: 1px 5px 1px 5px;
+}
