@@ -1,7 +1,0 @@
-parameters:
-#    rpp_db_riesel.example.class: RPPDb\RieselBundle\Example
-
-services:
-#    rpp_db_riesel.example:
-#        class: %rpp_db_riesel.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
