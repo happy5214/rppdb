@@ -1,0 +1,9 @@
+label {
+	text-align: right;
+	width: 12em;
+	float: left;
+}
+
+input.prime_edit {
+	width: 10em;
+}

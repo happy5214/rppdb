@@ -44,12 +44,3 @@
 
   .box {font-size : 14px;}
   .boxover {font-size: 14px; font-weight: bold;}
-  
-  label {text-align: right; width: 12em; float: left;}
-  input.prime_edit {width: 10em;}
-  
-  .hlist li {display: inline-block;}
-  .ui-menu-item a {color: #000000;}
-  a.ui-state-focus, a.ui-state-active {font-weight: bold !important;}
-  li.ui-menu-item {display: inline-block; text-align: center; width: auto !important;}
-  .submenu {position: absolute; top: 0px; left: 150px;}
