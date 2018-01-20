@@ -53,28 +53,28 @@ class RieselK
     /**
      * @var integer
      *
-     * @ORM\Column(name="is15k", type="integer")
+     * @ORM\Column(name="is15k", type="integer", nullable=true)
      */
     private $is15k;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="is2145k", type="integer")
+     * @ORM\Column(name="is2145k", type="integer", nullable=true)
      */
     private $is2145k;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="is2805k", type="integer")
+     * @ORM\Column(name="is2805k", type="integer", nullable=true)
      */
     private $is2805k;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="is_primorial", type="integer")
+     * @ORM\Column(name="is_primorial", type="integer", nullable=true)
      */
     private $isPrimorial;
 
@@ -133,8 +133,15 @@ class RieselK
      */
     protected $primes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="WorkRange", mappedBy="rieselK", cascade={"persist"})
+     * @ORM\OrderBy({"minN" = "ASC"})
+     */
+    protected $workRanges;
+
     public function __construct() {
         $this->primes = new ArrayCollection();
+        $this->workRanges = new ArrayCollection();
     }
     
     /**
@@ -470,12 +477,43 @@ class RieselK
     }
 
     /**
+     * Add workRanges
+     *
+     * @param \RPPDb\RieselBundle\Entity\WorkRange $range
+     * @return RieselK
+     */
+    public function addWorkRange(\RPPDb\RieselBundle\Entity\WorkRange $range) {
+        $this->workRanges[] = $range;
+        $range->setRieselK($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove workRanges
+     *
+     * @param \RPPDb\RieselBundle\Entity\WorkRange $range
+     */
+    public function removeWorkRange(\RPPDb\RieselBundle\Entity\WorkRange $range) {
+        $this->workRanges->removeElement($range);
+    }
+
+    /**
      * Get primes
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
     public function getPrimes() {
         return $this->primes;
+    }
+
+    /**
+     * Get workRanges
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWorkRanges() {
+        return $this->workRanges;
     }
 
     /**
