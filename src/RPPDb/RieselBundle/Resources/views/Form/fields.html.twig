@@ -26,6 +26,21 @@
 {{ form_row(form.lastUpdate) }}
 </fieldset>
 
+<fieldset class="ranges">
+<legend>Ranges</legend>
+<table class="table1 ranges" style="text-align: center; width: 100%;" data-prototype="{{ form_widget(form.workRanges.vars.prototype)|e }}">
+<thead><tr>
+<th>Min <i>n</i></th>
+<th>Max <i>n</i></th>
+</tr></thead>
+<tbody class="ranges">
+{% for range in form.workRanges %}
+{{ form_widget(range) }}
+{% endfor %}
+</tbody>
+</table>
+</fieldset>
+
 <fieldset class="primes">
 <legend>Primes</legend>
 <table class="table1 primes" style="text-align: center; width: 100%;" data-prototype="{{ form_widget(form.primes.vars.prototype)|e }}">
@@ -68,6 +83,15 @@
 <td>{{ form_widget(form.testedTwin) }}</td>
 <td>{{ form_widget(form.foundBy) }}</td>
 <td>{{ form_widget(form.foundOn, {'attr': {'class': 'prime_edit'}}) }}</td>
+</tr>
+
+{% endblock %}
+
+{% block work_range_widget %}
+
+<tr>
+<td>{{ form_widget(form.minN, {'attr': {'class': 'prime_edit'}}) }}</td>
+<td>{{ form_widget(form.maxN, {'attr': {'class': 'prime_edit'}}) }}</td>
 </tr>
 
 {% endblock %}

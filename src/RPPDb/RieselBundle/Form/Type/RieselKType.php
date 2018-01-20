@@ -39,6 +39,12 @@ class RieselKType extends AbstractType {
             ->add('reservedBy', TextType::class, array('required' => false))
             ->add('lastUpdate', DateType::class, array('required' => false, 'widget' => 'single_text'))
             ->add('coveringSet', TextType::class, array('required' => false))
+            ->add('workRanges', CollectionType::class,  array(
+                'entry_type'   => WorkRangeType::class,
+                'allow_add'    => true,
+                'by_reference' => false,
+                'label'        => false,
+                ))
             ->add('primes', CollectionType::class, array(
                 'entry_type'   => RieselPrimeType::class,
                 'allow_add'    => true,
