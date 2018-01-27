@@ -21,3 +21,12 @@
 {{ macros.nearWoodallDisplay2(nearWoodall.n, nearWoodall.sign) }}
 {% endif %}
 {% endmacro %}
+
+{% macro commentDisplay(comment) %}
+{% import _self as macros %}
+{% if comment.commentType == 'Near Woodall' %}
+Near Woodall: {{ macros.nearWoodallDisplay(comment) }}
+{% else %}
+{{ comment }}
+{% endif %}
+{% endmacro %}

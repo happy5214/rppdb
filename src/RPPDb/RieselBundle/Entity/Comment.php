@@ -91,4 +91,13 @@ class Comment {
     public function __toString() {
         return $this->contents;
     }
+
+    /**
+     * Get comment type
+     *
+     * @return string
+     */
+    public function getCommentType() {
+        return "";
+    }
 }

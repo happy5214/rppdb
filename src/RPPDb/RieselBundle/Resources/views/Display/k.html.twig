@@ -59,7 +59,15 @@
 <td>{% if prime.woodall %}{{ fancyMacros.woodallDisplay(prime.woodall) }}{% endif %}</td>
 <td>{{ prime.isTwin ? "Yes" }}</td>
 <td>{{ prime.isSG ? "Yes" }}</td>
-<td>{{ prime.comments ? prime.comments|join('\n')|nl2br }}</td>
+<td>{%- if prime.comments -%}
+<ul class='comments-list'>{%- for comment in prime.comments -%}
+<li>{%- if comment.commentType -%}
+{{ fancyMacros.commentDisplay(comment) }}
+{%- else -%}
+{{ comment }}
+{%- endif -%}</li>
+{%- endfor -%}</ul>
+{%- endif -%}</td>
 {% if prime.utm %}
 <td colspan="2">Prime Pages</td>
 {% else %}

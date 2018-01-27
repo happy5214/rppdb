@@ -52,3 +52,9 @@ table.prime-list th[scope=row] {
 	text-align: inherit;
 	padding: 1px 5px 1px 5px;
 }
+
+ul.comments-list {
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}

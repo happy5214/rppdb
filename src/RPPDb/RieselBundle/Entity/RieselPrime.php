@@ -518,7 +518,7 @@ class RieselPrime
     public function getComments() {
         $comments = array();
         if (!is_null($this->nearWoodall)) {
-            $comments[] = $this->nearWoodall->commentString();
+            $comments[] = $this->nearWoodall;
         }
         if (!is_null($this->comment)) {
             $comments[] = $this->comment;
