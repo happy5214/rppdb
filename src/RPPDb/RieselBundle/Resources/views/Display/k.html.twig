@@ -33,7 +33,7 @@
 
 <h2>Prime data</h2>
 
-<table class="table1">
+<table id="prime-details" class="table1">
 <thead>
 <tr>
 <th>#</th>
@@ -53,13 +53,13 @@
 <tbody>
 {% for prime in k.primes %}
 <tr>
-<th scope="row">{{ loop.index }}</th>
-<td>{{ prime.n }}</td>
-<td>{% if prime.utm %}<a href="javascript:utm({{ prime.utm }})">{{ prime.utm }}</a>{% endif %}</td>
-<td>{% if prime.woodall %}{{ fancyMacros.woodallDisplay(prime.woodall) }}{% endif %}</td>
-<td>{{ prime.isTwin ? "Yes" }}</td>
-<td>{{ prime.isSG ? "Yes" }}</td>
-<td>{%- if prime.comments -%}
+<th class="prime-index" scope="row">{{ loop.index }}</th>
+<td class="n-cell">{{ prime.n }}</td>
+<td class="prime-pages-cell">{% if prime.utm %}<a href="javascript:utm({{ prime.utm }})">{{ prime.utm }}</a>{% endif %}</td>
+<td class="woodall-cell">{% if prime.woodall %}{{ fancyMacros.woodallDisplay(prime.woodall) }}{% endif %}</td>
+<td class="twin-cell">{{ prime.isTwin ? "Yes" }}</td>
+<td class="sophie-germain-cell">{{ prime.isSG ? "Yes" }}</td>
+<td class="comments-cell">{%- if prime.comments -%}
 <ul class='comments-list'>{%- for comment in prime.comments -%}
 <li>{%- if comment.commentType -%}
 {{ fancyMacros.commentDisplay(comment) }}
@@ -69,14 +69,14 @@
 {%- endfor -%}</ul>
 {%- endif -%}</td>
 {% if prime.utm %}
-<td colspan="2">Prime Pages</td>
+<td class="proven-by-prime-pages" colspan="2">Prime Pages</td>
 {% else %}
-<td>{{ prime.isProvenPrime ? "Yes" }}</td>
-<td>{% if prime.testedPrime %}<a href="{{ path('_riesel_display_program', {'id': prime.testedPrime.id}) }}">{{ prime.testedPrime }}</a>{% else %}N/A{% endif %}</td>
+<td class="proven-cell">{{ prime.isProvenPrime ? "Yes" }}</td>
+<td class="prime-test-cell">{% if prime.testedPrime %}<a href="{{ path('_riesel_display_program', {'id': prime.testedPrime.id}) }}">{{ prime.testedPrime }}</a>{% else %}N/A{% endif %}</td>
 {% endif %}
-<td>{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}</a>{% else %}N/A{% endif %}{% endif %}</td>
-<td>{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.foundOn is empty ? "" : prime.foundOnString }}</td>
+<td class="twin-test-cell">{% if prime.isTwin %}{% if prime.testedTwin %}<a href="{{ path('_riesel_display_program', {'id': prime.testedTwin.id}) }}">{{ prime.testedTwin }}</a>{% else %}N/A{% endif %}{% endif %}</td>
+<td class="found-by-cell">{% if prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.foundBy.id}) }}">{{ prime.foundBy.name }}</a>{% endif %}</td>
+<td class="found-date-cell">{{ prime.foundOn is empty ? "" : prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>

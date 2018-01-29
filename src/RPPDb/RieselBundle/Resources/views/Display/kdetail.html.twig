@@ -1,11 +1,11 @@
-<tr class="{{ k.coveringSet ? 'don' : k.reserved }}">
-<th scope="row" class="{{ k.kclass }}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}{% if k.is15k %}<br>({{ k.is15k }}){% endif %}{% if k.is2145k %}<br>({{ k.is2145k }}){% endif %}{% if k.is2805k %}<br>({{ k.is2805k }}){% endif %}</a></th>
-<td>{{ k.reservedBy|raw }}</td>
-<td>{{ k.lastUpdate is empty ? "" : k.lastUpdate|date("Y-m-d") }}</td>
-<td>{{ k.primes|length }}</td>
-<td>{{ k.nashWeight }}</td>
-<td>{{ k.ranges|raw }}</td>
-<td>
+<tr class="k-row {{ k.coveringSet ? 'don' : k.reserved }}">
+<th scope="row" class="k-cell {{ k.kclass }}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}{% if k.is15k %}<br>({{ k.is15k }}){% endif %}{% if k.is2145k %}<br>({{ k.is2145k }}){% endif %}{% if k.is2805k %}<br>({{ k.is2805k }}){% endif %}</a></th>
+<td class="reservation-cell">{{ k.reservedBy|raw }}</td>
+<td class="updated-cell">{{ k.lastUpdate is empty ? "" : k.lastUpdate|date("Y-m-d") }}</td>
+<td class="prime-count-cell">{{ k.primes|length }}</td>
+<td class="nash-cell">{{ k.nashWeight }}</td>
+<td class="ranges-cell">{{ k.ranges|raw }}</td>
+<td class="primes-cell">
 {%- if k.coveringSet -%}
 Covering set = {{ k.coveringSet }}
 {%- else -%}
