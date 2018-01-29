@@ -19,33 +19,33 @@ class NearWoodall {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var integer
      *
      * @ORM\Column(name="n", type="integer")
      */
     private $n;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="sign", type="string", length=1)
      */
     private $sign;
-    
+
     /**
      * @var integer
      *
      * @ORM\Column(name="digits", type="integer")
      */
     private $digits;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="RieselPrime", inversedBy="nearWoodall")
      */
     private $prime;
-    
+
     /**
      * Get id
      *
@@ -54,7 +54,7 @@ class NearWoodall {
     public function getId() {
         return $this->id;
     }
-    
+
     /**
      * Set n
      *
@@ -66,7 +66,7 @@ class NearWoodall {
 
         return $this;
     }
-    
+
     /**
      * Get n
      *
@@ -75,7 +75,7 @@ class NearWoodall {
     public function getN() {
         return $this->n;
     }
-    
+
     /**
      * Set sign
      *
@@ -87,7 +87,7 @@ class NearWoodall {
 
         return $this;
     }
-    
+
     /**
      * Get sign
      *
@@ -96,7 +96,7 @@ class NearWoodall {
     public function getSign() {
         return $this->sign;
     }
-    
+
     /**
      * Set prime
      *
@@ -108,7 +108,7 @@ class NearWoodall {
 
         return $this;
     }
-    
+
     /**
      * Get prime
      *
@@ -117,7 +117,7 @@ class NearWoodall {
     public function getPrime() {
         return $this->prime;
     }
-    
+
     /**
      * Get string (plain text) rendering
      * 
@@ -125,12 +125,12 @@ class NearWoodall {
      */
     public function __toString() {
         if ($this->sign == "/") {
-            return "(1+1)*2^1-1; also (2-1)*2^2-1";
+            return "Near Woodall: (1+1)*2^1-1; also (2-1)*2^2-1";
         } else {
-            return "({$this->n}{$this->sign}1)*2^{$this->n}-1";
+            return "Near Woodall: ({$this->n}{$this->sign}1)*2^{$this->n}-1";
         }
     }
-    
+
     /**
      * Get comment type
      * 
@@ -139,7 +139,7 @@ class NearWoodall {
     public function getCommentType() {
         return "Near Woodall";
     }
-    
+
     /**
      * Get string (styled) rendering
      * 
@@ -152,7 +152,7 @@ class NearWoodall {
             return "({$this->n}{$this->sign}1)&middot;2<sup>{$this->n}</sup>-1";
         }
     }
-    
+
     /**
      * Set digits
      *
@@ -164,7 +164,7 @@ class NearWoodall {
 
         return $this;
     }
-    
+
     /**
      * Get digits
      *
