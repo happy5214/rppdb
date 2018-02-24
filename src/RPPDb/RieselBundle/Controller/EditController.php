@@ -2,6 +2,8 @@
 
 namespace RPPDb\RieselBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,16 +30,36 @@ class EditController extends Controller {
      */
     public function kAction(Request $request, $k) {
         $manager = $this->getDoctrine()->getManager();
-        
+
         $rieselK = $manager->getRepository('RPPDbRieselBundle:RieselK')->findOneById($k);
-        
+
+        $originalPrimes = new ArrayCollection();
+        $originalRanges = new ArrayCollection();
+
+        foreach ($rieselK->getPrimes() as $prime) {
+            $originalPrimes->add($prime);
+        }
+        foreach ($rieselK->getWorkRanges() as $range) {
+            $originalRanges->add($range);
+        }
+
         $form = $this->createForm(RieselKType::class, $rieselK);
         $form->handleRequest($request);
-        
+
         if ($form->isValid()) {
             $rieselK->setLastEdit(new \DateTime());
+            foreach ($originalPrimes as $prime) {
+                if (!$rieselK->getPrimes()->contains($prime)) {
+                    $manager->remove($prime);
+                }
+            }
+            foreach ($originalRanges as $range) {
+                if (!$rieselK->getWorkRanges()->contains($range)) {
+                    $manager->remove($range);
+                }
+            }
             $manager->flush();
-            
+
             return $this->redirect($this->generateUrl('_riesel_display_k', array('k' => $rieselK->getNum())));
         }
         return array('k' => $rieselK->getNum(), 'form' => $form->createView());

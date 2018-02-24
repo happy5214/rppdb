@@ -42,12 +42,14 @@ class RieselKType extends AbstractType {
             ->add('workRanges', CollectionType::class,  array(
                 'entry_type'   => WorkRangeType::class,
                 'allow_add'    => true,
+                'allow_delete' => true,
                 'by_reference' => false,
                 'label'        => false,
                 ))
             ->add('primes', CollectionType::class, array(
                 'entry_type'   => RieselPrimeType::class,
                 'allow_add'    => true,
+                'allow_delete' => true,
                 'by_reference' => false,
                 'label'        => false,
                 ))
