@@ -53,7 +53,7 @@
 <tbody>
 {% for prime in k.primes %}
 <tr>
-<th class="prime-index" scope="row">{{ loop.index }}</th>
+<th class="index-header" scope="row">{{ loop.index }}</th>
 <td class="n-cell">{{ prime.n }}</td>
 <td class="prime-pages-cell">{% if prime.utm %}<a href="javascript:utm({{ prime.utm }})">{{ prime.utm }}</a>{% endif %}</td>
 <td class="woodall-cell">{% if prime.woodall %}{{ fancyMacros.woodallDisplay(prime.woodall) }}{% endif %}</td>

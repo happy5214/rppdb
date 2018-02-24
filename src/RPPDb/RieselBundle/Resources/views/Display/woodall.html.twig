@@ -26,12 +26,12 @@ Woodall and Near Woodall primes
 <tbody>
 {% for prime in woodall %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_woodall', {'id': prime.id}) }}" title="Edit this Woodall prime">{{ loop.index }}</a></th>
-<td>{{ prime.n }}</td>
-<td>{{ prime.digits }}</td>
-<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
-<td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
+<th scope="row" class="index-header"><a href="{{ path('_riesel_edit_woodall', {'id': prime.id}) }}" title="Edit this Woodall prime">{{ loop.index }}</a></th>
+<td class="n-cell">{{ prime.n }}</td>
+<td class="digits-cell">{{ prime.digits }}</td>
+<td class="canonical-cell"><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
+<td class="found-by-cell">{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
+<td class="found-date-cell">{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -62,12 +62,12 @@ Woodall and Near Woodall primes
 </tr>
 {% for prime in plus %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
-<td>{{ prime.n }}</td>
-<td>{{ prime.digits }}</td>
-<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
-<td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
+<th scope="row" class="index-header"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
+<td class="n-cell">{{ prime.n }}</td>
+<td class="digits-cell">{{ prime.digits }}</td>
+<td class="canonical-cell"><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
+<td class="found-by-cell">{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
+<td class="found-date-cell">{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -98,12 +98,12 @@ Woodall and Near Woodall primes
 </tr>
 {% for prime in minus %}
 <tr>
-<th scope="row"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
-<td>{{ prime.n }}</td>
-<td>{{ prime.digits }}</td>
-<td><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
-<td>{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
-<td>{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
+<th scope="row" class="index-header"><a href="{{ path('_riesel_edit_nearwoodall', {'id': prime.id}) }}" title="Edit this near Woodall prime">{{ loop.index + 1 }}</a></th>
+<td class="n-cell">{{ prime.n }}</td>
+<td class="digits-cell">{{ prime.digits }}</td>
+<td class="canonical-cell"><a href="{{ path('_riesel_display_k', {'k': prime.prime.rieselK.num}) }}">{{ fancyMacros.primeDisplay(prime.prime) }}</a></td>
+<td class="found-by-cell">{% if prime.prime.foundBy %}<a href="{{ path('_riesel_display_contributor', {'id': prime.prime.foundBy.id}) }}">{{ prime.prime.foundBy.name }}</a>{% endif %}</td>
+<td class="found-date-cell">{{ prime.prime.foundOn is empty ? "" : prime.prime.foundOnString }}</td>
 </tr>
 {% endfor %}
 </tbody>
