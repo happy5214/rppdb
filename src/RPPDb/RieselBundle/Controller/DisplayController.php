@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use texdc\range\IntegerRange;
+
 class DisplayController extends Controller {
     /**
      * @Route("/list/{min}/{max}", name="_riesel_display_list")
@@ -42,6 +44,28 @@ class DisplayController extends Controller {
             // return the 304 Response immediately
             return $response;
         } else {
+            $workRanges = $rieselK->getWorkRanges();
+            if ($workRanges->isEmpty()) {
+                $intRanges = array(new IntegerRange(-1, -1));
+            } else {
+                $intRanges = array();
+                $leadingEdge = null;
+                foreach ($workRanges as $range) {
+                    $minN = $range->getMinN();
+                    $maxN = $range->getMaxN();
+                    $intRange = new IntegerRange($minN, $maxN);
+                    if (is_null($leadingEdge)) {
+                        $leadingEdge = $intRange;
+                    }
+                    elseif ($leadingEdge->overlaps($intRange)) {
+                        $leadingEdge = IntegerRange::merge($leadingEdge, $intRange);
+                    } else {
+                        $intRanges[] = $leadingEdge;
+                        $leadingEdge = $intRange;
+                    }
+                }
+                $intRanges[] = $leadingEdge;
+            }
             $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
             $renderedPrimes = '';
             if ($rieselK->getMaxTested()) {
@@ -67,7 +91,7 @@ class DisplayController extends Controller {
                 $after = array();
                 $separator = false;
             }
-            return $this->render('RPPDbRieselBundle:Display:kdetail.html.twig', array('k' => $rieselK, 'before' => $before, 'after' => $after, 'separator' => $separator), $response);
+            return $this->render('RPPDbRieselBundle:Display:kdetail.html.twig', array('k' => $rieselK, 'before' => $before, 'after' => $after, 'separator' => $separator, 'workRanges' => $intRanges), $response);
         }
     }
     
