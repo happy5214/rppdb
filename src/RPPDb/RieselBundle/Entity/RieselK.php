@@ -432,27 +432,6 @@ class RieselK
     public function getCoveringSet() {
         return $this->coveringSet;
     }
-    
-    /**
-     * Get CSS class
-     * 
-     * @return string
-     */
-    public function kclass() {
-        if ($this->coveringSet) {
-            return 'don';
-        } elseif ($this->is2805k) {
-            return 'k28';
-        } elseif ($this->is2145k) {
-            return 'k21';
-        } elseif ($this->is15k) {
-            return 'k15';
-        } elseif ($this->nashWeight < 1000) {
-            return 'low';
-        } else {
-            return '';
-        }
-    }
 
     /**
      * Add primes

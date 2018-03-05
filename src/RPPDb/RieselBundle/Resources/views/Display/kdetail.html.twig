@@ -1,5 +1,5 @@
-<tr class="k-row {{ k.coveringSet ? 'don' : k.reserved }}">
-<th scope="row" class="k-cell {{ k.kclass }}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}{% if k.is2805k %}<br>({{ k.is2805k }}){% endif %}{% if k.is2145k %}<br>({{ k.is2145k }}){% endif %}{% if k.is15k %}<br>({{ k.is15k }}){% endif %}</a></th>
+<tr class="k-row {% if k.coveringSet -%} has-covering-set {%- elseif k.reserved == 'res' -%} reserved-individual {%- elseif k.reserved == 'prj' -%} reserved-project {%- else -%} not-reserved {%- endif %}">
+<th scope="row" class="k-cell {% if k.is2805k -%} k2805 {%- elseif k.is2145k -%} k2145 {%- elseif k.is15k -%} k15 {%- elseif k.nashWeight < 1000 and not k.coveringSet -%} low {%- endif -%}"><a href="{{ path('_riesel_display_k', {'k': k.num}) }}">{{ k.value|raw }}</a>{% if k.is2805k %}<br><span class="k2805">({{ k.is2805k }})</span>{% endif %}{% if k.is2145k %}<br><span class="k2145">({{ k.is2145k }})</span>{% endif %}{% if k.is15k %}<br><span class="k15">({{ k.is15k }})</span>{% endif %}</th>
 <td class="reservation-cell">{{ k.reservedBy|raw }}</td>
 <td class="updated-cell">{{ k.lastUpdate is empty ? "" : k.lastUpdate|date("Y-m-d") }}</td>
 <td class="prime-count-cell">{{ k.primes|length }}</td>

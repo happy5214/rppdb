@@ -1,3 +1,4 @@
+/* Prime list */
 .sophie-germain {
 	font-weight: bold;
 }
@@ -18,9 +19,47 @@
 	cursor: pointer;
 }
 
+/* k detail row backgrounds */
+
+.k15 {
+	background-color:#ffccff;
+}
+
+.k2145, .k21 {
+	background-color:#0099ff;
+}
+
+.k2805, .k28 {
+	background-color:#00ff00;
+}
+
+.primorial {
+	background-color:#ffff00;
+}
+
+.low-weight, .low {
+	background-color:#00ffff;
+}
+
+.reserved-individual, .res {
+	background-color:#ffff99;
+}
+
+.reserved-project, .prj {
+	background-color:#aaaad8;
+}
+
+.has-covering-set, .done, .don {
+	background-color:#00cc00;
+}
+  
+/* Other cell backgrounds */
+
 .jumping {
 	background-color: #ffff99;
 }
+
+/* Prime detail table */
 
 table.prime-list {
 	border-color:#000000;

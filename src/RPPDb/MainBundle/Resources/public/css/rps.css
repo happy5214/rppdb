@@ -2,18 +2,10 @@
   Definition of colors
 */
 
-  .low {background-color:#00ffff;} /* low weight */
-  .res {background-color:#ffff99;} /* reserved */
   .ris {background-color:#ff9900;} /* riesel-k */
-  .k15 {background-color:#ffccff;} /* 15k candidate */
-  .k21 {background-color:#0099ff;} /* 2145k candidate */
-  .k28 {background-color:#00ff00;} /* 2805k candidate */
-  .prm {background-color:#ffff00;} /* primorial-k candidate */
-  .don {background-color:#00cc00;} /* done = green */
   .p100 {border-color:#000000; border-width:1px; border-style:solid;} /* 100th prime */
   .tt  {background-color:#bbbb99; font-weight:bold;} /* table heads */
   .ttt {background-color:#bbbb99;} /* grey backgound */
-  .prj {background-color:#aaaad8;} /* reserved by project */
   .lnt  {text-decoration:line-through;} /*  line trough */
 
   .res1 {background-color:#ffff99; color:#FF0000;} /* reserved + red font*/
