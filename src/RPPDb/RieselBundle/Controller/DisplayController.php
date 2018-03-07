@@ -131,7 +131,7 @@ class DisplayController extends Controller {
      */
     public function firstTwinAction() {
         $repo = $this->getDoctrine()->getManager()->getRepository('RPPDbRieselBundle:RieselPrime');
-        $tens = 10;
+        $tens = 11;
         $flat_ks = array(0 => '-');
         $jumpingKs = array();
         $jumping = 0;
