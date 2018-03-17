@@ -97,3 +97,13 @@ ul.comments-list {
 	padding: 0;
 	list-style-position: inside;
 }
+
+ul.ranges-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.ranges-list li {
+	white-space: nowrap;
+}
